@@ -103,7 +103,7 @@ def exp_int(a, b):
     Errors: TypeError
     :return: int
     """
-    if type(a) and type(b) == int and a != 0:
+    if type(a) == type(b) == int and a != 0:
         return a ** b
     raise TypeError('Need only int and a not 0')
 
@@ -115,7 +115,7 @@ def remainder_div_int(a, b):
     Errors: TypeError
     :return: int
     """
-    if type(a) and type(b) == int and 0 not in (a, b):
+    if type(a) == type(b) == int and 0 not in (a, b):
         return a % b
     raise TypeError('Need only int and a or b not 0')
 
@@ -127,7 +127,7 @@ def sum_range_int(a, b):
     Errors: TypeError
     :return: int
     """
-    if type(a) and type(b) == int and a < b:
+    if type(a) == type(b) == int and a < b:
         return sum([item for item in range(a, b) if item > 0])
     raise TypeError('Need only int and a not > b')
 
@@ -163,7 +163,7 @@ def con_str(a, b):
     Concatenation str a+b
     :return:str
     """
-    if type(a) and type(b) == str:
+    if type(a) == type(b) == str:
         return a + b
     raise TypeError('Need only str')
 
@@ -264,7 +264,7 @@ def makerange_list(int_start, int_end):
     Make list from range
     :return: list
     """
-    if type(int_start) and type(int_end) == int and int_start < int_end:
+    if type(int_start) == type(int_end) == int and int_start < int_end:
         return list(range(int_start, int_end))
     raise TypeError('Need  2 int(a,b), and  a < b')
 
@@ -274,7 +274,7 @@ def compare_list(list_a, list_b):
     Make  list with item in list_a, but not in   list_b
     :return: list
     """
-    if type(list_a) and type(list_b) != list:
+    if type(list_a) != list or type(list_b) != list:
         raise TypeError('Need only 2 list')
     return [item for item in list_a if item not in list_b]
 
@@ -284,7 +284,7 @@ def extend_list(list_a, list_b):
     Make  list with item in list_a, but not in   list_b
     :return: list
     """
-    if type(list_a) and type(list_b) != list:
+    if type(list_a)!= list or type(list_b) != list:
         raise TypeError('Need only 2 list')
     list_a.extend(list_b)
     return list_a
@@ -318,7 +318,7 @@ def update_dict(dict_a, dict_b):
     Make dict_a + dict_b
     :return:dict
     """
-    if type(dict_a) and type(dict_b) != dict:
+    if type(dict_a) != dict or type(dict_b) != dict:
         raise TypeError('Need only 2 dict')
     dict_a.update(dict_b)
     return dict_a
@@ -353,7 +353,7 @@ def inter_set(set_a, set_b):
 
     :return: set
     """
-    if type(set_a) and type(set_b) != set:
+    if type(set_a)!= set or type(set_b) != set:
         raise TypeError('Need only 2 set')
     return set_a & set_b
 
@@ -364,7 +364,7 @@ def notinter_set(set_a, set_b):
 
     :return: set
     """
-    if type(set_a) and type(set_b) != set:
+    if type(set_a)!= set or type(set_b) != set:
         raise TypeError('Need only 2 set')
     inter_set = set_a & set_b
     set_a.update(set_b)
@@ -388,6 +388,6 @@ def uniquein_set(set_a, set_b):
 
     :return: set
     """
-    if type(set_a) and type(set_b) != set:
+    if type(set_a)!= set or type(set_b) != set:
         raise TypeError('Need only 2 set')
     return set_a ^ set_b
