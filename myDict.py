@@ -5,11 +5,10 @@ import os
 
 class MyDict(object):
 
-    def __init__(self , *args, **kwargs):
+    def __init__(self, *args, **kwargs):
         self.name_workdir = self.get_random_name() + "/"
         self.make_workdir()
         self.keysset = set()
-
 
     def get_random_name(self):
         return self.get_datenow() + '__' + str(random.randrange(10000, 99999))
@@ -26,7 +25,7 @@ class MyDict(object):
     def clear(self):
         """ D.clear() -> None.  Remove all items from D. """
         for key in self.keysset.copy():
-            self.del_kv(key)
+            self.del_keyvalue(key)
 
     def copy(self):
         """ D.copy() -> a shallow copy of D """
@@ -35,7 +34,6 @@ class MyDict(object):
         for key, value in self.items():
             obj.add(key, value)
         return obj
-
 
     @staticmethod  # known case
     def fromkeys(*args, **kwargs):  # real signature unknown
@@ -47,7 +45,7 @@ class MyDict(object):
         if args[0] and args[0] in self.keysset:
             return self.read_value(str(args[0]))
         else:
-            return args[1] or None #args[1] or
+            return args[1] or None  # args[1] or
 
     def items(self):
         """ D.items() -> a set-like object providing a view on D's items """
@@ -61,17 +59,15 @@ class MyDict(object):
         D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
         If key is not found, d is returned if given, otherwise KeyError is raised
         """
-
         if self.get(k, d):
             d = self.get(k)
-            self.del_kv(k)
+            self.del_keyvalue(k)
             return d
         raise KeyError('Not found key')
 
     def popitem(self, *args, **kwargs):  # real signature unknown
         """
         Remove and return a (key, value) pair as a 2-tuple.
-
         Pairs are returned in LIFO (last-in, first-out) order.
         Raises KeyError if the dict is empty.
         """
@@ -80,10 +76,13 @@ class MyDict(object):
     def setdefault(self, *args, **kwargs):  # real signature unknown
         """
         Insert key with a value of default if key is not in the dictionary.
-
         Return the value for key if key is in the dictionary, else default.
         """
-        pass
+        if args[0] in self.keysset:
+            return self.get(args[0])
+        self.add(args[0], args[1]) if len(args) == 2 else self.add(args[0])
+
+
 
     def update(self, E=None, **F):  # known special case of dict.update
         """
@@ -101,24 +100,17 @@ class MyDict(object):
         """ D.values() -> return iterable obj for all values """
         return (self.get(key) for key in self.keysset)
 
-      # known case of __new__
-   # def __new__(cls, *args, **kwargs):  # real signature unknown
-        """ Create and return a new object.  See help(type) for accurate signature. """
-    #    print(f"cls={cls}")
-    #    return super(MyDict, cls).__new__(cls, *args, *kwargs)
-
-
     def __del__(self):
         self.clear()
         if os.path.exists(self.name_workdir):
             print('By!')
             os.rmdir(self.name_workdir)
 
-    def del_kv(self, key):
+    def del_keyvalue(self, key):
         self.keysset.remove(key)
         os.remove(self.name_workdir + str(key))
 
-    def add(self, key, value):
+    def add(self, key, value=""):
         with open(self.name_workdir + str(key), "w") as file:
             file.write(value)
             self.keysset.add(key)
@@ -138,8 +130,11 @@ c.add("17", "sdsdsdsd2")
 
 print(len(c))
 d = c.copy()
-print(type(d))
+
 for key, value in d.items():
-    print(key,value)
-
-
+    print(key, value)
+print(id(c))
+print(id(d))
+d.setdefault("18")
+for key, value in d.items():
+    print(key, value)
