@@ -92,7 +92,8 @@ class MyDict(object):
         If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v
         In either case, this is followed by: for k in F:  D[k] = F[k]
         """
-        pass
+        for key, value in F:
+            self.add(key, value)
 
     def __len__(self):
         return len(self.keysset)
