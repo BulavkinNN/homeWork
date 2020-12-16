@@ -6,7 +6,7 @@ c = myDict()
 
 class MyTestCase(unittest.TestCase):
     def test_something(self):
-        self.assertEqual(True, False)
+        self.assertEqual(c, False)
 
 
 if __name__ == '__main__':

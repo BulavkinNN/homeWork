@@ -71,7 +71,10 @@ class MyDict(object):
         Pairs are returned in LIFO (last-in, first-out) order.
         Raises KeyError if the dict is empty.
         """
-        pass
+        if len(self) == 0:
+            raise KeyError("My_dict is empty")
+        return self.pop(self.keysset[-1])
+
 
     def setdefault(self, *args, **kwargs):  # real signature unknown
         """
@@ -81,8 +84,6 @@ class MyDict(object):
         if args[0] in self.keysset:
             return self.get(args[0])
         self.add(args[0], args[1]) if len(args) == 2 else self.add(args[0])
-
-
 
     def update(self, E=None, **F):  # known special case of dict.update
         """
