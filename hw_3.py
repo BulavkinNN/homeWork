@@ -1,7 +1,7 @@
 def getmax_int():
     """
     Get max int
-    :return:int
+    :return: int
     """
     pass
 
