@@ -9,8 +9,9 @@ class MyDict:
         self.name_workdir = self.get_random_name() + "/"
         self.make_workdir()
         self.keysset = set()
-        for key, value in args:
-            self.add(key, value)
+        for item in args:
+            for key, value in item:
+                self.add(key, value)
 
 
     def get_random_name(self):
@@ -56,7 +57,7 @@ class MyDict:
         return ((key, self.get(key)) for key in self.keysset)
 
     def keys(self):
-        return (keys for keys in self.keys)
+        return (keys for keys in self.keysset)
 
     def pop(self, key, d=None):  # real signature unknown; restored from __doc__
         """
