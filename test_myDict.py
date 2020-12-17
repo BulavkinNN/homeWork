@@ -5,8 +5,9 @@ import myDict
 class MyTestCase(unittest.TestCase):
 
     def setUp(self):
-        self.myDict = myDict.MyDict([('15', 'fifteen'), ('16', 'sixteen'), ('1','one')])#(['15', 'fifteen'], ['16', 'sixteen'], ['1', 'one'])
+        self.myDict = myDict.MyDict([('15', 'fifteen'), ('16', 'sixteen'), ('1','one')])
         self.myDict2 = myDict.MyDict([('15_new', 'fifteen_new'), ('16_new', 'sixteen_new'), ('1_new', 'one_new')])
+
     def tearDown(self):
         self.myDict.__del__()
 
