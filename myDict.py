@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 
 
-class MyDict(object):
+class MyDict:
 
     def __init__(self, *args, **kwargs):
         self.name_workdir = self.get_random_name() + "/"
@@ -88,15 +88,16 @@ class MyDict(object):
             return self.get(args[0])
         self.add(args[0], args[1]) if len(args) == 2 else self.add(args[0])
 
-    def update(self, E=None, **F):  # known special case of dict.update
+    def update(self, *args):  # known special case of dict.update
         """
         D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
         If E is present and has a .keys() method, then does:  for k in E: D[k] = E[k]
         If E is present and lacks a .keys() method, then does:  for k, v in E: D[k] = v
         In either case, this is followed by: for k in F:  D[k] = F[k]
         """
-        for key, value in F:
-            self.add(key, value)
+        for item in args:
+            for key, value in item.items():
+                self.add(key, value)
 
     def __len__(self):
         return len(self.keysset)
@@ -108,7 +109,6 @@ class MyDict(object):
     def __del__(self):
         self.clear()
         if os.path.exists(self.name_workdir):
-            print('By!')
             os.rmdir(self.name_workdir)
 
     def del_keyvalue(self, key):
@@ -130,16 +130,12 @@ class MyDict(object):
     def __getitem__(self, args):
         return self.get(args)
 
+    def __call__(self, *args, **kwargs):
+        #make calleble!!!
+        pass
+
+    def __iter__(self):
+        return (key for key in self.keysset)
 
 
-
-c = MyDict(["10","sdsd"], ["115","fsfdfds"])
-
-c.add("16", "sdsdsdsd1")
-c.add("17", "sdsdsdsd2")
-c.add("18", "sdsdsdsd2")
-
-print(c['10'])
-
-print(c.get('115'))
 
