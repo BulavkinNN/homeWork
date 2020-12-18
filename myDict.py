@@ -136,7 +136,7 @@ class MyDict:
         pass
 
     def __iter__(self):
-        return (key for key in self.keys())#return (key for key in self.keysset)
+        return (key for key in self.keys())
 
     def __copy__(self):
         self.copy()

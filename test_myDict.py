@@ -25,7 +25,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.myDict.pop("15"), 'fifteen')
 
     def test_str(self):
-        self.assertEqual(self.myDict.__str__(), "[('16', 'sixteen'), ('1', 'one'), ('15', 'fifteen')]")
+        self.assertEqual(self.myDict.__str__(), "[('16', 'sixteen'), ('1', 'one'), ('15', 'fifteen')]")# not FIFO
 
     def test_get(self):
         self.assertEqual(self.myDict.get('16'), 'sixteen')
