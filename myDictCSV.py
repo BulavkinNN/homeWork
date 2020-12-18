@@ -22,6 +22,6 @@ class MyDictCSV(object):#myDict.MyDict
 
 
 c= MyDictCSV()
-c.write_csv("12","15")
-c.write_csv("13","16")
+c.write_csv("12","Andrey")
+c.write_csv("13","Dmitriy;")
 print(c.read_csv())
