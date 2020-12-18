@@ -24,6 +24,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(self.dict.get("new", "Unknown user"), "Unknown user")
         self.assertEqual(self.dict.pop("15"), 'fifteen')
 
+    def test_str(self):
+        self.assertEqual(self.dict.__str__(), "{'15': 'fifteen', '16': 'sixteen', '1': 'one'}")
+
     def test_get(self):
         self.assertEqual(self.dict.get('16'), 'sixteen')
 

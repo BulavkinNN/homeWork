@@ -34,7 +34,7 @@ class MyDict:
     def copy(self):
         """ D.copy() -> a shallow copy of D """
         """ Make init copy keyset and file from old to new dir"""
-        obj = MyDict()
+        obj = self.__class__() # make obj self class
         for key, value in self.items():
             obj.add(key, value)
         return obj
@@ -136,10 +136,13 @@ class MyDict:
         pass
 
     def __iter__(self):
-        return (key for key in self.keysset)
+        return (key for key in self.keys())#return (key for key in self.keysset)
 
     def __copy__(self):
         self.copy()
+
+    def __str__(self):
+        return str([(key, value) for key, value in self.items()])
 
 
 
