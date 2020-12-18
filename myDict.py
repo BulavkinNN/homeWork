@@ -138,5 +138,8 @@ class MyDict:
     def __iter__(self):
         return (key for key in self.keysset)
 
+    def __copy__(self):
+        self.copy()
+
 
 
