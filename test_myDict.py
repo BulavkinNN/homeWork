@@ -9,7 +9,7 @@ class MyTestCase(unittest.TestCase):
         self.myDict2 = myDict.MyDict([('15_new', 'fifteen_new'), ('16_new', 'sixteen_new'), ('1_new', 'one_new')])
 
     def tearDown(self):
-        self.myDict.__del__()
+        pass
 
     def test_clear(self):
         self.assertEqual(self.myDict.clear(), None)

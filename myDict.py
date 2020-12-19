@@ -52,6 +52,7 @@ class MyDict:
             return args[1]
         return None  # Хотел вот так args[1] or None !!!!!!!!!!!
 
+
     def items(self):
         """ D.items() -> a set-like object providing a view on D's items """
         return ((key, self.get(key)) for key in self.keysset)
