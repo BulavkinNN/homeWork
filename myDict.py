@@ -34,7 +34,7 @@ class MyDict:
     def copy(self):
         """ D.copy() -> a shallow copy of D """
         """ Make init copy keyset and file from old to new dir"""
-        obj = MyDict()
+        obj = self.__class__() # make obj self class
         for key, value in self.items():
             obj.add(key, value)
         return obj
@@ -52,6 +52,7 @@ class MyDict:
             return args[1]
         return None  # Хотел вот так args[1] or None !!!!!!!!!!!
 
+
     def items(self):
         """ D.items() -> a set-like object providing a view on D's items """
         return ((key, self.get(key)) for key in self.keysset)
@@ -66,7 +67,7 @@ class MyDict:
         """
         if self.get(key, d):
             d = self.get(key)
-            self.del_keyvalue(key)
+            self.__delitem__(key)
             return d
         raise KeyError('Not found key')
 
@@ -78,7 +79,7 @@ class MyDict:
         """
         if len(self) == 0:
             raise KeyError("My_dict is empty")
-        return self.pop(self.keysset[-1])
+        return self.pop(list(self.keys())[self.__len__()-1]) #find last in list key and self.pop
 
     def setdefault(self, *args, **kwargs):  # real signature unknown
         """
@@ -136,7 +137,21 @@ class MyDict:
         pass
 
     def __iter__(self):
-        return (key for key in self.keysset)
+        return (key for key in self.keys())
+
+    def __copy__(self):
+        self.copy()
+
+    def __str__(self):
+        return str(["{} : {}".format(key, value) for key, value in self.items()])
+
+    def __contains__(self, key):  # real signature unknown
+        """ True if the dictionary has the specified key, else False. """
+        return key in self.keys()
+
+    def __delitem__(self, key):  # real signature unknown
+        """ Delete self[key]. """
+        self.del_keyvalue(key)
 
 
 
