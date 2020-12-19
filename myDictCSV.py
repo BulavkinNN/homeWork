@@ -55,13 +55,6 @@ class MyDictCSV(myDict.MyDict):
         """ D.items() -> a set-like object providing a view on D's items """
         return ((item[0], item[1]) for item in self._read_csv())
 
-    def values(self):
-        """ D.values() -> return iterable obj for all values """
-        return (value for _, value in self.items())
-
-    def keys(self):
-        return (keys for keys, _ in self.items())
-
     def clear(self):
         """ D.clear() -> None.  Remove all items from D. """
         self._write_csv(mode_write="w")

@@ -41,7 +41,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_copy(self):
         self.assertCountEqual(self.myDict, self.myDict.copy()) # a(elements)  = b (elements)
-        self.assertNotEqual(self.myDict, self.myDict.copy())  # a != b (elements)
+        self.assertEqual(self.myDict, self.myDict.copy())  # a != b (elements)
 
     def test_type(self):
         self.assertIsInstance(self.myDict, myDict.MyDict)  #isinstance(a, b)

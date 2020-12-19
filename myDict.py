@@ -3,7 +3,7 @@ from datetime import datetime
 import os
 
 
-class MyDict:
+class MyDict(dict):
 
     def __init__(self, *args, **kwargs):
         self.name_workdir = self.get_random_name() + "/"
@@ -58,7 +58,7 @@ class MyDict:
         return ((key, self.get(key)) for key in self.keysset)
 
     def keys(self):
-        return (keys for keys in self.keysset)
+        return (keys for keys, _ in self.items())
 
     def pop(self, key, d=None):  # real signature unknown; restored from __doc__
         """
@@ -104,9 +104,16 @@ class MyDict:
     def __len__(self):
         return len(self.keysset)
 
-    def values(self):
+    def values_(self):
         """ D.values() -> return iterable obj for all values """
         return (self.get(key) for key in self.keysset)
+
+
+    def values(self):
+        """ D.values() -> return iterable obj for all values """
+        return (value for _, value in self.items())
+
+
 
     def __del__(self):
         self.clear()
