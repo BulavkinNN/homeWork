@@ -22,7 +22,12 @@ class MyTestCase(unittest.TestCase):
     def test_key(self):
         self.assertEqual(self.myDict['15'], 'fifteen')
         self.assertEqual(self.myDict.get("new", "Unknown user"), "Unknown user")
+
+    def test_pop(self):
         self.assertEqual(self.myDict.pop("15"), 'fifteen')
+        self.assertEqual(len(self.myDict), 2)
+        self.assertEqual(self.myDict.popitem(), 'one')
+
 
     def test_del(self):
         self.assertEqual(self.myDict.__delitem__('15'), None)

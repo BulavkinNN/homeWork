@@ -78,7 +78,7 @@ class MyDict:
         """
         if len(self) == 0:
             raise KeyError("My_dict is empty")
-        return self.pop(self.keysset[-1])
+        return self.pop(list(self.keys())[self.__len__()-1]) #find last in list key and self.pop
 
     def setdefault(self, *args, **kwargs):  # real signature unknown
         """

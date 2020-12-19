@@ -5,9 +5,12 @@ import os
 
 class MyDictCSV(myDict.MyDict):
 
-    def __init__(self):
+    def __init__(self, *args):
         self.file_csv = self.get_random_name() + ".csv"
         self.clear()  # make empty file
+        for item in args:
+            for key, value in item:
+                self.add(key, value)
 
     def _write_allcsv(self, list_items):
         self.clear() # write all in empty file
@@ -40,9 +43,9 @@ class MyDictCSV(myDict.MyDict):
         """
         return self._read_csv().index([key, self.get(key=key)])
 
-    def get(self, d=None, key=None):
+    def get(self,  key=None, d=None):
         """ Return the value for key if key is in the dictionary, else default(d) or d=None. """
-        if key and key in self.keys():
+        if key in self.keys():
             for (k, v) in self.items():
                 if k == key:
                     d = v
@@ -75,27 +78,10 @@ class MyDictCSV(myDict.MyDict):
 
     def __delitem__(self, key):  # real signature unknown
         """ Delete self[key]. """
-        if self._get_indexkey(key) >=0:
+        if self._get_indexkey(key) >= 0:
             new_edit_dict = self._read_csv()[:]  # make copy dict
             new_edit_dict.pop(self._get_indexkey(key))  # remove tuple by index where key ==(key,value)
             self._write_allcsv(new_edit_dict)  # all new dict write in file
 
 
 
-c = MyDictCSV()
-c.add("12", "Andrey")
-c["16"] = "Dmitriy"
-c.add("14", "Dmitriy14")
-c.add("15", "Dmitriy15")
-
-c.add("12", "Dmitriy_n")
-for key, value in c.items():
-    print(key, value)
-
-print(len(c))
-e = c.copy()
-print(e)
-c.__delitem__("12")
-print(c)
-print(c.pop('14'))
-print(c)
