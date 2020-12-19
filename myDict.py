@@ -142,7 +142,15 @@ class MyDict:
         self.copy()
 
     def __str__(self):
-        return str([(key, value) for key, value in self.items()])
+        return str(["{} : {}".format(key, value) for key, value in self.items()])
+
+    def __contains__(self, key):  # real signature unknown
+        """ True if the dictionary has the specified key, else False. """
+        return key in self.keys()
+
+    def __delitem__(self, key):  # real signature unknown
+        """ Delete self[key]. """
+        self.del_keyvalue(key)
 
 
 

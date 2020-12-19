@@ -69,15 +69,34 @@ class MyDictCSV(myDict.MyDict):
     def __len__(self):
         return len(self._read_csv())
 
+    def __deepcopy__(self, memodict={}):
+        #return memodict  (memodict.update(key, value) for key, value in self.items())
+        pass
+
+    def __delitem__(self, key):  # real signature unknown
+        """ Delete self[key]. """
+        print(key)
+        if self._get_indexkey(key) >=0:
+            print("i am here")
+            new_edit_dict = self._read_csv()[:]  # make copy dict
+            print(self._get_indexkey(key))
+            new_edit_dict.pop(self._get_indexkey(key))  # remove tuple by index where key ==(key,value)
+            self._write_allcsv(new_edit_dict)  # all new dict write in file
+
+
 
 c = MyDictCSV()
 c.add("12", "Andrey")
-c.add("13", "Dmitriy")
+c["16"] = "Dmitriy"
 c.add("14", "Dmitriy14")
 c.add("15", "Dmitriy15")
 
-c.add("13", "Dmitriy_n")
+c.add("12", "Dmitriy_n")
 for key, value in c.items():
     print(key, value)
 
 print(len(c))
+e = c.copy()
+print(e)
+c.__delitem__("12")
+print(c)
