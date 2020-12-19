@@ -75,11 +75,8 @@ class MyDictCSV(myDict.MyDict):
 
     def __delitem__(self, key):  # real signature unknown
         """ Delete self[key]. """
-        print(key)
         if self._get_indexkey(key) >=0:
-            print("i am here")
             new_edit_dict = self._read_csv()[:]  # make copy dict
-            print(self._get_indexkey(key))
             new_edit_dict.pop(self._get_indexkey(key))  # remove tuple by index where key ==(key,value)
             self._write_allcsv(new_edit_dict)  # all new dict write in file
 
@@ -99,4 +96,6 @@ print(len(c))
 e = c.copy()
 print(e)
 c.__delitem__("12")
+print(c)
+print(c.pop('14'))
 print(c)

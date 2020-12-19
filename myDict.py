@@ -66,7 +66,7 @@ class MyDict:
         """
         if self.get(key, d):
             d = self.get(key)
-            self.del_keyvalue(key)
+            self.__delitem__(key)
             return d
         raise KeyError('Not found key')
 
