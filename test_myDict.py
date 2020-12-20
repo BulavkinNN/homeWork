@@ -60,11 +60,12 @@ class MyTestCase(unittest.TestCase):
         self.assertIn(('1', 'one'), self.myDict.items())  # a in b
         self.assertIn('one', self.myDict.values())  # a in b
 
-    def test_iter(self):
-        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b
-        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b
-        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b
-        self.assertRaises(StopIteration, next(self.myDict), )  # a end
+    def test_next(self):# have 3 keys
+        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b # have 2 keys
+        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b # have 1 keys
+        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b # have 0 keys
+        with self.assertRaises(StopIteration):
+            next(self.myDict) # Key was end out
 
 
 if __name__ == '__main__':

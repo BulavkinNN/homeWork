@@ -144,7 +144,6 @@ class MyDict(dict):
         pass
 
     def __iter__(self):
-        print("Iter !!!!")
         return (key for key in self.keys())
 
     def __copy__(self):
@@ -162,7 +161,6 @@ class MyDict(dict):
         self.del_keyvalue(key)
 
     def __next__(self):
-        print("I am here",self.copy_keys)
         if len(self.copy_keys) == self.pos_iter == 0:
             self.copy_keys = list(self.keys())
         if self.__len__() == 0 or len(self.copy_keys) == 0 and self.pos_iter > 0:

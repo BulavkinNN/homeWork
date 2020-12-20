@@ -11,6 +11,8 @@ class MyDictCSV(myDict.MyDict):
         for item in args:
             for key, value in item:
                 self.add(key, value)
+        self.copy_keys = []
+        self.pos_iter = 0
 
     def _write_allcsv(self, list_items):
         self.clear() # write all in empty file
