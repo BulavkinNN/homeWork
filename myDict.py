@@ -13,7 +13,6 @@ class MyDict(dict):
             for key, value in item:
                 self.add(key, value)
 
-
     def get_random_name(self):
         return self.get_datenow() + '__' + str(random.randrange(10000, 99999))
 
@@ -34,15 +33,18 @@ class MyDict(dict):
     def copy(self):
         """ D.copy() -> a shallow copy of D """
         """ Make init copy keyset and file from old to new dir"""
-        obj = self.__class__() # make obj self class
+        obj = self.__class__()  # make obj self class
         for key, value in self.items():
             obj.add(key, value)
         return obj
 
     @staticmethod  # known case
-    def fromkeys(*args, **kwargs):  # real signature unknown
+    def fromkeys(keys_iterable, value=None):  # real signature unknown
         """ Create a new dictionary with keys from iterable and values set to value. """
-        pass
+        obj = MyDict()  # make obj self class
+        for key in keys_iterable:
+            obj[key] = value
+        return obj
 
     def get(self, *args, **kwargs):
         """ Return the value for key if key is in the dictionary, else default. """
@@ -51,7 +53,6 @@ class MyDict(dict):
         elif len(args) == 2:
             return args[1]
         return None  # Хотел вот так args[1] or None !!!!!!!!!!!
-
 
     def items(self):
         """ D.items() -> a set-like object providing a view on D's items """
@@ -79,7 +80,7 @@ class MyDict(dict):
         """
         if len(self) == 0:
             raise KeyError("My_dict is empty")
-        return self.pop(list(self.keys())[self.__len__()-1]) #find last in list key and self.pop
+        return self.pop(list(self.keys())[self.__len__() - 1])  # find last in list key and self.pop
 
     def setdefault(self, *args, **kwargs):  # real signature unknown
         """
@@ -108,12 +109,9 @@ class MyDict(dict):
         """ D.values() -> return iterable obj for all values """
         return (self.get(key) for key in self.keysset)
 
-
     def values(self):
         """ D.values() -> return iterable obj for all values """
         return (value for _, value in self.items())
-
-
 
     def __del__(self):
         self.clear()
@@ -140,7 +138,7 @@ class MyDict(dict):
         return self.get(args)
 
     def __call__(self, *args, **kwargs):
-        #make calleble!!!
+        # make calleble!!!
         pass
 
     def __iter__(self):
@@ -159,6 +157,3 @@ class MyDict(dict):
     def __delitem__(self, key):  # real signature unknown
         """ Delete self[key]. """
         self.del_keyvalue(key)
-
-
-

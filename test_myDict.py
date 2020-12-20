@@ -7,6 +7,7 @@ class MyTestCase(unittest.TestCase):
     def setUp(self):
         self.myDict = myDict.MyDict([('15', 'fifteen'), ('16', 'sixteen'), ('1','one')])
         self.myDict2 = myDict.MyDict([('15_new', 'fifteen_new'), ('16_new', 'sixteen_new'), ('1_new', 'one_new')])
+        self.myDict3 = myDict.MyDict.fromkeys([1, 2, 3, 4, 5], "numbers")
 
     def tearDown(self):
         pass
@@ -14,6 +15,10 @@ class MyTestCase(unittest.TestCase):
     def test_clear(self):
         self.assertEqual(self.myDict.clear(), None)
         self.assertEqual(len(self.myDict), 0)
+
+    def test_fromkeys(self):
+        self.assertEqual(len(self.myDict3), 5)
+
 
     def test_update(self):
         self.assertEqual(self.myDict.update(self.myDict2), None)
@@ -26,7 +31,7 @@ class MyTestCase(unittest.TestCase):
     def test_pop(self):
         self.assertEqual(self.myDict.pop("15"), 'fifteen')
         self.assertEqual(len(self.myDict), 2)
-        self.assertEqual(self.myDict.popitem(), 'one')
+        self.assertIn(self.myDict.popitem(), ('one', 'sixteen')) #'one' or 'sixteen'
 
 
     def test_del(self):
