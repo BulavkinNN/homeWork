@@ -31,7 +31,7 @@ class MyTestCase(unittest.TestCase):
     def test_pop(self):
         self.assertEqual(self.myDict.pop("15"), 'fifteen')
         self.assertEqual(len(self.myDict), 2)
-        self.assertIn(self.myDict.popitem(), ('one', 'sixteen')) #'one' or 'sixteen'
+        self.assertIn(self.myDict.popitem(), ('one', 'sixteen')) #'one' or 'sixteen' , order is different
 
 
     def test_del(self):
@@ -39,7 +39,9 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(len(self.myDict), 2)
 
     def test_str(self):
-        self.assertEqual(self.myDict.__str__(), "['16 : sixteen', '1 : one', '15 : fifteen']")# not FIFO
+        self.assertEqual(self.myDict.pop("15"), 'fifteen')
+        self.assertEqual(self.myDict.pop("16"), 'sixteen')
+        self.assertEqual(self.myDict.__str__(), "['1 : one']") # stay only one element, because the order is different
 
     def test_get(self):
         self.assertEqual(self.myDict.get('16'), 'sixteen')
@@ -57,6 +59,13 @@ class MyTestCase(unittest.TestCase):
         self.assertIn('1', self.myDict.keys()) # a in b
         self.assertIn(('1', 'one'), self.myDict.items())  # a in b
         self.assertIn('one', self.myDict.values())  # a in b
+
+    def test_iter(self):
+        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b
+        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b
+        self.assertIn(next(self.myDict), ['16','15','1'])  # a in b
+        self.assertRaises(StopIteration, next(self.myDict), )  # a end
+
 
 if __name__ == '__main__':
     unittest.main()

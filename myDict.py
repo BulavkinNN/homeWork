@@ -12,6 +12,8 @@ class MyDict(dict):
         for item in args:
             for key, value in item:
                 self.add(key, value)
+        self.copy_keys = []
+        self.pos_iter = 0
 
     def get_random_name(self):
         return self.get_datenow() + '__' + str(random.randrange(10000, 99999))
@@ -142,6 +144,7 @@ class MyDict(dict):
         pass
 
     def __iter__(self):
+        print("Iter !!!!")
         return (key for key in self.keys())
 
     def __copy__(self):
@@ -157,3 +160,15 @@ class MyDict(dict):
     def __delitem__(self, key):  # real signature unknown
         """ Delete self[key]. """
         self.del_keyvalue(key)
+
+    def __next__(self):
+        print("I am here",self.copy_keys)
+        if len(self.copy_keys) == self.pos_iter == 0:
+            self.copy_keys = list(self.keys())
+        if self.__len__() == 0 or len(self.copy_keys) == 0 and self.pos_iter > 0:
+            self.pos_iter = 0
+            raise StopIteration("Key was end out")
+   #     if self.copy_keys not in list(self.keys()):
+    #        raise StopIteration("The keys was updates")
+        self.pos_iter += 1
+        return self.copy_keys.pop()
