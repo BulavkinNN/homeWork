@@ -3,7 +3,20 @@ def getmax_int():
     Get max int
     :return: int
     """
-    pass
+    a = 10
+    while True:
+        result = pow(2, a)
+        print("Try make int = 2 in {:,d}, this is 1e+ {}".format(a, get_0inint(a)))
+        del result
+        a *= 10
+
+
+def get_0inint(a):
+    count = 0
+    while a > 0:
+        a //= 10
+        count += 1
+    return count
 
 
 def getmin_int():
@@ -11,7 +24,12 @@ def getmin_int():
     Get  min int
     :return:result
     """
-    pass
+    a = 10
+    while True:
+        result = -pow(2, a)
+        print("Try make int = -2 in {:,d}, this is 1e+{}".format(a, get_0inint(a)))
+        del result
+        a *= 10
 
 
 def max_float(a):
@@ -46,7 +64,7 @@ def max_str(count=90000000):
     try:
         while (1):
             my_str = "1" * count
-            #print(my_str)
+            # print(my_str)
             del my_str
             count += 1
     except (OverflowError, MemoryError):
@@ -78,7 +96,7 @@ def max_list():
     my_list = [1]
     try:
         while (1):
-            #print(coint)
+            # print(coint)
             my_list = [my_list[:]]
             coint += 1
     except (OverflowError, MemoryError):
@@ -142,20 +160,84 @@ def sum_abs_int(*args):
     return sum([abs(a) for a in args if type(a) == int])
 
 
-def explore_float():
+def add_float(a, b):
     """
-    5 action with dict
+    5 action with float
     :return:
     """
-    pass
+    if type(a) == type(b) == float:
+        return a + b
+    raise TypeError('Need only float')
 
 
-def explore_complex():
+def sub_float(a, b):
     """
-    5 action with dict
+    5 action with float
     :return:
     """
-    pass
+    if type(a) == type(b) == float:
+        return a - b
+    raise TypeError('Need only float')
+
+
+def mul_float(a, b):
+    """
+    5 action with float
+    :return:
+    """
+    if type(a) == type(b) == float:
+        return a * b
+    raise TypeError('Need only float')
+
+
+def div_float(a, b):
+    """
+    5 action with float
+    :return:
+    """
+    if type(a) == type(b) == float and a != 0 and b != 0:
+        return a / b
+    raise TypeError('Need only float')
+
+
+def add_complex(a, b):
+    """
+    5 action with complex
+    :return:
+    """
+    if type(a) == type(b) == complex:
+        return a + b
+    raise TypeError('Need only complex')
+
+
+def sub_complex(a, b):
+    """
+    5 action with complex
+    :return:
+    """
+    if type(a) == type(b) == complex:
+        return a - b
+    raise TypeError('Need only complex')
+
+
+def mul_complex(a, b):
+    """
+    5 action with complex
+    :return:
+    """
+    if type(a) == type(b) == complex:
+        return a * b
+    raise TypeError('Need only complex')
+
+
+def div_complex(a, b):
+    """
+    5 action with complex
+    :return:
+    """
+    if type(a) == type(b) == complex and a != 0 and b != 0:
+        return a / b
+    raise TypeError('Need only complex')
 
 
 def con_str(a, b):
@@ -223,12 +305,14 @@ def value_bool(value):
     """
     return bool(value)
 
+
 def and_bool(value1, value2):
     """
     Logical + (and)
     :return: bool
     """
     return bool(value1) and bool(value2)
+
 
 def or_bool(value1, value2):
     """
@@ -237,6 +321,7 @@ def or_bool(value1, value2):
     """
     return bool(value1) or bool(value2)
 
+
 def not_bool(value1):
     """
     Logical or
@@ -244,12 +329,14 @@ def not_bool(value1):
     """
     return not bool(value1)
 
+
 def notand_bool(value1, value2):
     """
     Invert or
     :return: bool
     """
     return not (bool(value1) and bool(value2))
+
 
 def make_list(*args):
     """
@@ -284,7 +371,7 @@ def extend_list(list_a, list_b):
     Make  list with item in list_a, but not in   list_b
     :return: list
     """
-    if type(list_a)!= list or type(list_b) != list:
+    if type(list_a) != list or type(list_b) != list:
         raise TypeError('Need only 2 list')
     list_a.extend(list_b)
     return list_a
@@ -310,7 +397,6 @@ def make_dict(my_list):
     if type(my_list) != list:
         raise TypeError('Need list')
     return dict.fromkeys(my_list)
-
 
 
 def update_dict(dict_a, dict_b):
@@ -353,7 +439,7 @@ def inter_set(set_a, set_b):
 
     :return: set
     """
-    if type(set_a)!= set or type(set_b) != set:
+    if type(set_a) != set or type(set_b) != set:
         raise TypeError('Need only 2 set')
     return set_a & set_b
 
@@ -364,7 +450,7 @@ def notinter_set(set_a, set_b):
 
     :return: set
     """
-    if type(set_a)!= set or type(set_b) != set:
+    if type(set_a) != set or type(set_b) != set:
         raise TypeError('Need only 2 set')
     inter_set = set_a & set_b
     set_a.update(set_b)
@@ -388,6 +474,6 @@ def uniquein_set(set_a, set_b):
 
     :return: set
     """
-    if type(set_a)!= set or type(set_b) != set:
+    if type(set_a) != set or type(set_b) != set:
         raise TypeError('Need only 2 set')
     return set_a ^ set_b
