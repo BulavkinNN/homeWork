@@ -81,7 +81,8 @@ def gen_pi(number):
 for i in gen_pi(100):
     print("i=",type(i),i)
 
-print(str(get_pi(100)))
+print(str(gen_pi(100)))
+print(tuple(gen_pi(100)))
 
 for i in get_even3fib(21):
     print (i)
