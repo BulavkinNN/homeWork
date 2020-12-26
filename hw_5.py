@@ -1,3 +1,7 @@
+import math
+from decimal import Decimal
+import decimal
+
 from collections import deque
 
 def get_fib(n):
@@ -52,6 +56,27 @@ def get_even3fib(n):
         if result % 2 != 0:
             continue
         yield result
+
+
+
+def get_pi(n):
+
+''' prec  digit digital'''
+    with decimal.localcontext(decimal.Context(prec= n +1)):
+        pi = 0
+        for k in range(0, n+1):
+            i1 = Decimal(4)/(8*k+1)
+            i2 = Decimal(2)/(8*k+4)
+            i3 = Decimal(1)/(8*k+5)
+            i4 = Decimal(1)/(8*k+6)
+            pi +=pow(Decimal(16),-k)*(i1-i2-i3-i4)
+    return pi
+
+
+def gen_pi(number):
+  pi = str(get_pi(number))
+  yield pi[:number+1]
+
 
 
 for i in get_even3fib(21):
