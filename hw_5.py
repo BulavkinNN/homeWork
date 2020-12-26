@@ -61,10 +61,9 @@ def get_even3fib(n):
 
 def get_pi(n):
 
-''' prec  digit digital'''
-    with decimal.localcontext(decimal.Context(prec= n +1)):
+    with decimal.localcontext(decimal.Context(prec= n + 1)): #digit number
         pi = 0
-        for k in range(0, n+1):
+        for k in range(0, n):
             i1 = Decimal(4)/(8*k+1)
             i2 = Decimal(2)/(8*k+4)
             i3 = Decimal(1)/(8*k+5)
@@ -74,10 +73,15 @@ def get_pi(n):
 
 
 def gen_pi(number):
-  pi = str(get_pi(number))
-  yield pi[:number+1]
+    pi = str(get_pi(number))
+    for i in pi: # or pi[2:] skip error with int(.)
+        yield int(i) if i.isdigit() else "."
 
 
+for i in gen_pi(100):
+    print("i=",type(i),i)
+
+print(str(get_pi(100)))
 
 for i in get_even3fib(21):
     print (i)
