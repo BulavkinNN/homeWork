@@ -10,10 +10,10 @@ class MyTestCase(unittest.TestCase):
     def test_evenfib(self):
         self.assertEqual(list(hw_5.get_evenfib(5)), [0, 2])
 
-    def test_fib(self):
+    def test_3fib(self):
         self.assertEqual(list(hw_5.get_3fib(5)), [0, 0, 1, 1, 2])
 
-    def test_evenfib(self):
+    def test_even3fib(self):
         self.assertEqual(list(hw_5.get_even3fib(5)), [0, 0, 2])
 
     def test_pi(self):
