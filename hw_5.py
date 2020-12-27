@@ -31,6 +31,20 @@ def get_evenfib(n):
             yield result
 
 
+def get_n_evenfib(n):
+    '''
+
+    :param n:
+    :return: Even number Fibodachi
+    '''
+    fib_list = deque([1, -1], maxlen=2)
+    while n > 0:
+        result = sum(fib_list)
+        fib_list.appendleft(result)
+        if result % 2 == 0:
+            n -= 1
+            yield result
+
 
 def get_3fib(n):
     '''
@@ -57,6 +71,20 @@ def get_even3fib(n):
         if result % 2 == 0:
             yield result
 
+
+def get_n_even3fib(n):
+    '''
+
+    :param n:
+    :return: N Even nuber 3Fibodachi
+    '''
+    fib_list = deque([1, -1, 0], maxlen=3)
+    while n > 0:
+        result = sum(fib_list)
+        fib_list.appendleft(result)
+        if result % 2 == 0:
+            n -= 1
+            yield result
 
 
 def get_pi(n):

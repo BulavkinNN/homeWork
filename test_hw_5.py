@@ -10,15 +10,21 @@ class MyTestCase(unittest.TestCase):
     def test_evenfib(self):
         self.assertEqual(list(hw_5.get_evenfib(5)), [0, 2])
 
+    def test_n_evenfib(self):
+        self.assertEqual(list(hw_5.get_n_evenfib(5)), [0, 2, 8, 34, 144])
+
     def test_3fib(self):
         self.assertEqual(list(hw_5.get_3fib(5)), [0, 0, 1, 1, 2])
 
     def test_even3fib(self):
         self.assertEqual(list(hw_5.get_even3fib(5)), [0, 0, 2])
 
+    def test_n_even3fib(self):
+        self.assertEqual(list(hw_5.get_n_even3fib(5)), [0, 0, 2, 4, 24])
+
     def test_pi(self):
-        self.assertEqual(list(hw_5.gen_pi(9)), [3, '.', 1, 4, 1, 5, 9, 2, 6, 5, 3])
-        self.assertEqual(float(hw_5.get_pi(15)), math.pi)
+        self.assertEqual(list(hw_5.gen_pi(9)), [3, '.', 1, 4, 1, 5, 9, 2, 6, 5, 3])#list with n digit of pi
+        self.assertEqual(float(hw_5.get_pi(15)), math.pi)#15 digit of pi
 
 
 if __name__ == '__main__':
