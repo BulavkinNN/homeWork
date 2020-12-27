@@ -13,7 +13,7 @@ def get_fib(n: int) -> int:
     if type(n) !=int or n <= 0:
         raise ValueError("Only int > 0")
     fib_list = deque([1, -1], maxlen=2)  # All time only 2 items
-    for i in (range(0, n + 1)):  # i count
+    for i in range(0, n):  # i count
         result = sum(fib_list)
         yield result
         fib_list.appendleft(result)
@@ -28,7 +28,7 @@ def get_evenfib(n: int) -> int:
     if not isinstance(n, int) or n <= 0:
         raise ValueError("Only int > 0")
     fib_list = deque([1, -1], maxlen=2)  # All time only 2 items
-    for i in (range(0, n + 1)):
+    for i in range(0, n):
         result = sum(fib_list)
         fib_list.appendleft(result)
         if result % 2 == 0:
@@ -61,7 +61,7 @@ def get_3fib(n: int) -> int:
     if not isinstance(n, int) or n <= 0:
         raise ValueError("Only int > 0")
     fib_list = deque([1, -1, 0], maxlen=3)  # All time only 3 items
-    for i in (range(0, n)):
+    for i in range(0, n):
         yield sum(fib_list)
         fib_list.appendleft(sum(fib_list))
 
@@ -75,7 +75,7 @@ def get_even3fib(n: int) -> int:
     if not isinstance(n, int) or n <= 0:
         raise ValueError("Only int > 0")
     fib_list = deque([1, -1, 0], maxlen=3)  # All time only 3 items
-    for i in (range(0, n)):
+    for i in range(0, n):
         result = sum(fib_list)
         fib_list.appendleft(result)
         if result % 2 == 0:

@@ -6,7 +6,8 @@ import math
 class MyTestCase(unittest.TestCase):
 
     def test_fib(self):
-        self.assertEqual(list(hw_5.get_fib(5)), [0, 1, 1, 2, 3, 5])
+        self.assertEqual(list(hw_5.get_fib(5)), [0, 1, 1, 2, 3])
+        self.assertEqual(list(hw_5.get_fib(1)), [0])
 
     def test_valuefib(self):
         self.assertRaises(ValueError, list, hw_5.get_fib('s'))
@@ -28,6 +29,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_3fib(self):
         self.assertEqual(list(hw_5.get_3fib(5)), [0, 0, 1, 1, 2])
+        self.assertEqual(list(hw_5.get_3fib(1)), [0])
 
     def test_value3fib(self):
         self.assertRaises(ValueError, list, hw_5.get_3fib('s'))
@@ -42,6 +44,7 @@ class MyTestCase(unittest.TestCase):
 
     def test_n_even3fib(self):
         self.assertEqual(list(hw_5.get_n_even3fib(5)), [0, 0, 2, 4, 24])
+        self.assertEqual(list(hw_5.get_n_even3fib(1)), [0])
 
     def test_valuen_even3fib(self):
         with self.assertRaises(ValueError):
