@@ -141,7 +141,7 @@ class MyDict(dict):
 
     def __call__(self, *args, **kwargs):
         # make calleble!!!
-        pass
+        return self.__str__()
 
     def __iter__(self):
         return (key for key in self.keys())

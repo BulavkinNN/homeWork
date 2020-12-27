@@ -21,15 +21,16 @@ def get_evenfib(n):
     '''
 
     :param n:
-    :return: Even nuber Fibodachi
+    :return: Even number Fibodachi
     '''
     fib_list = deque([1, -1], maxlen=2)
     for i in (range(0, n+1)):
         result = sum(fib_list)
+        fib_list.appendleft(result)
         if result % 2 != 0:
             continue
         yield result
-        fib_list.appendleft(sum(fib_list))
+
 
 def get_3fib(n):
     '''
@@ -78,11 +79,3 @@ def gen_pi(number):
         yield int(i) if i.isdigit() else "."
 
 
-for i in gen_pi(100):
-    print("i=",type(i),i)
-
-print(str(gen_pi(100)))
-print(tuple(gen_pi(100)))
-
-for i in get_even3fib(21):
-    print (i)
