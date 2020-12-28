@@ -4,13 +4,54 @@ import decimal
 from collections import deque
 
 
+def fibo2(number: int) -> list:
+    '''
+    Calculates n number Fibonacci, and return list
+    :param number: int > 0
+    :return: number Fibonacci by list
+    '''
+    if not isinstance(number, int) or number <= 0:
+        raise ValueError("Only int > 0")
+    fib_list = [0, 1]
+    return [fib_list[i] for i in range(0, number) if not fib_list.append(fib_list[i] + fib_list[i + 1])]
+
+
+def fibo2_even(n: int) -> list:
+    '''
+    Calculates n number Fibonacci, and return list with even
+    :param n: int > 0
+    :return: even number Fibonacci by list
+    '''
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("Only int > 0")
+    f_l = [0, 1]
+    return [f_l[i] for i in list(range(0, n)) if not f_l.append(f_l[i] + f_l[i + 1]) and f_l[i] % 2 == 0]
+
+
+def fibo2_even_n(n: int) -> list:
+    '''
+    Calculates n even number Fibonacci
+    :param n: int > 0
+    :return: even number Fibonacci by list
+    '''
+    if not isinstance(n, int) or n <= 0:
+        raise ValueError("Only int > 0")
+    f_l = [0, 1]
+    result = []
+    while len(result) != n:
+        if f_l[len(f_l) - 2] % 2 == 0:
+            result.append(f_l[len(f_l) - 2])
+        f_l.append(f_l[len(f_l) - 1] + f_l[len(f_l) - 2])
+    return result
+
+
 def get_fib(n: int) -> int:
     '''
     Calculates n numbers Fibonacci
     :param n:int >0
     :return: int number Fibonacci by generator
     '''
-    if type(n) !=int or n <= 0:
+    if type(n) != int or n <= 0:
         raise ValueError("Only int > 0")
     fib_list = deque([1, -1], maxlen=2)  # All time only 2 items
     for i in range(0, n):  # i count
