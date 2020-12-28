@@ -5,6 +5,17 @@ import math
 
 class MyTestCase(unittest.TestCase):
 
+    def test_fib2(self):
+        self.assertEqual(hw_5.fibo2(5), [0, 1, 1, 2, 3])
+        self.assertEqual(hw_5.fibo2(1), [0])
+
+    def test_even(self):
+        self.assertEqual(hw_5.fibo2_even(5), [0, 2])
+        self.assertEqual(hw_5.fibo2_even(1), [0])
+
+    def test_fibo2_even_n(self):
+        self.assertEqual(hw_5.fibo2_even_n(5), [0, 2, 8, 34, 144])
+
     def test_fib(self):
         self.assertEqual(list(hw_5.get_fib(5)), [0, 1, 1, 2, 3])
         self.assertEqual(list(hw_5.get_fib(1)), [0])
