@@ -25,20 +25,24 @@ def fibo2_even(n: int) -> list:
     if not isinstance(n, int) or n <= 0:
         raise ValueError("Only int > 0")
     f_l = [0, 1]
-
-    return [f_l[i] for i in list(range(0, n)) if not f_l.append(f_l[i] + f_l[i + 1]) and f_l[i] % 2 == 0 ]
+    return [f_l[i] for i in list(range(0, n)) if not f_l.append(f_l[i] + f_l[i + 1]) and f_l[i] % 2 == 0]
 
 
 def fibo2_even_n(n: int) -> list:
     '''
-    Calculates n number Fibonacci, and return list with even
+    Calculates n even number Fibonacci
     :param n: int > 0
     :return: even number Fibonacci by list
     '''
     if not isinstance(n, int) or n <= 0:
         raise ValueError("Only int > 0")
     f_l = [0, 1]
-   # return [f_l[len(f_l)-1] for _ in (yield 1 if len(f_l) < n) if not f_l.append(f_l[len(f_l)] + f_l[len(f_l) + 1]) and f_l[len(f_l)-1] % 2 == 0]
+    result = []
+    while len(result) != n:
+        if f_l[len(f_l) - 2] % 2 == 0:
+            result.append(f_l[len(f_l) - 2])
+        f_l.append(f_l[len(f_l) - 1] + f_l[len(f_l) - 2])
+    return result
 
 
 def get_fib(n: int) -> int:

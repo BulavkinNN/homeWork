@@ -15,6 +15,8 @@ class MyTestCase(unittest.TestCase):
 
     def test_fibo2_even_n(self):
         self.assertEqual(hw_5.fibo2_even_n(5), [0, 2, 8, 34, 144])
+        self.assertEqual(hw_5.fibo2_even_n(1), [0])
+        self.assertEqual(hw_5.fibo2_even_n(2), [0,2])
 
     def test_fib(self):
         self.assertEqual(list(hw_5.get_fib(5)), [0, 1, 1, 2, 3])
