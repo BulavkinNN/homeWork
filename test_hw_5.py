@@ -5,9 +5,9 @@ import math
 
 class MyTestCase(unittest.TestCase):
 
-    def test_fib3(self):
-        self.assertEqual(hw_5.fibo2(5), [0, 1, 1, 2, 3])
-        self.assertEqual(hw_5.fibo2(1), [0])
+    def test_fibo3(self):
+        self.assertEqual(hw_5.fibo3(5), [0, 1, 1, 2, 3])
+        self.assertEqual(hw_5.fibo3(1), [0])
 
     def test_fib2(self):
         self.assertEqual(hw_5.fibo2(5), [0, 1, 1, 2, 3])
