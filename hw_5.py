@@ -4,6 +4,17 @@ import decimal
 from collections import deque
 
 
+def fibo3(number: int) -> list:
+    '''
+    Calculates n number Fibonacci, and return list
+    :param number: int > 0
+    :return: number Fibonacci by list
+    '''
+    if not isinstance(number, int) or number <= 0:
+        raise ValueError("Only int > 0")
+    fib_list = [0, 1]
+    return [fib_list[i]+(fib_list.append(fib_list[i] + fib_list[i + 1]) or 0) for i in range(0, number)]
+
 def fibo2(number: int) -> list:
     '''
     Calculates n number Fibonacci, and return list
