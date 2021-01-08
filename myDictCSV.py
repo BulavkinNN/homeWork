@@ -45,13 +45,7 @@ class MyDictCSV(myDict.MyDict):
         """
         return self._read_csv().index([key, self.get(key=key)])
 
-    @staticmethod  # known case
-    def fromkeys(keys_iterable, value=None):  # real signature unknown
-        """ Create a new dictionary with keys from iterable and values set to value. """
-        obj = MyDictCSV()  # make obj self class
-        for key in keys_iterable:
-            obj[key] = value
-        return obj
+
 
     def get(self,  key=None, d=None):
         """ Return the value for key if key is in the dictionary, else default(d) or d=None. """

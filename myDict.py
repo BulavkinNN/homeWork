@@ -40,10 +40,10 @@ class MyDict(dict):
             obj.add(key, value)
         return obj
 
-    @staticmethod  # known case
-    def fromkeys(keys_iterable, value=None):  # real signature unknown
+    @classmethod  # known case
+    def fromkeys(cls, keys_iterable, value=None):  # real signature unknown
         """ Create a new dictionary with keys from iterable and values set to value. """
-        obj = MyDict()  # make obj self class
+        obj = cls()  # make obj self class
         for key in keys_iterable:
             obj[key] = value
         return obj
