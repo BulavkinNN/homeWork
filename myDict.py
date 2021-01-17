@@ -2,11 +2,10 @@ import random
 from datetime import datetime
 import os
 import time
-import LoggerMixin
 
 
-class MyDict( LoggerMixin, dict ):
 
+class MyDict(dict):
 
     def timer(func):
         def inner(*arg, **kwargs):
@@ -37,7 +36,6 @@ class MyDict( LoggerMixin, dict ):
                 self.add(key, value)
         self.copy_keys = []
         self.pos_iter = 0
-        self.log("Hi!") # Mixin method
 
 
     def get_random_name(self):
