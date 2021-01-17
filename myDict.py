@@ -1,10 +1,33 @@
 import random
 from datetime import datetime
 import os
+import time
+import LoggerMixin
 
 
-class MyDict(dict):
+class MyDict( LoggerMixin, dict ):
 
+
+    def timer(func):
+        def inner(*arg, **kwargs):
+            start_timer = time.perf_counter_ns()
+            result = func(*arg, **kwargs)
+            stop_timer = time.perf_counter_ns()
+            print(f"Function {func.__name__}  work {stop_timer - start_timer} ns")
+            return result
+
+        return inner
+
+    def logger(func):
+        def inner(*arg, **kwargs):
+            result = func(*arg, **kwargs)
+            print(f"Function {func.__name__} input:{arg, kwargs} return {result}")
+            return result
+
+        return inner
+
+    @logger
+    @timer
     def __init__(self, *args, **kwargs):
         self.name_workdir = self.get_random_name() + "/"
         self.make_workdir()
@@ -14,6 +37,8 @@ class MyDict(dict):
                 self.add(key, value)
         self.copy_keys = []
         self.pos_iter = 0
+        self.log("Hi!") # Mixin method
+
 
     def get_random_name(self):
         return self.get_datenow() + '__' + str(random.randrange(10000, 99999))
@@ -27,6 +52,8 @@ class MyDict(dict):
             raise Exception("Bingo!")
         os.mkdir(self.name_workdir)
 
+    @logger
+    @timer
     def clear(self):
         """ D.clear() -> None.  Remove all items from D. """
         for key in self.keysset.copy():
@@ -63,6 +90,8 @@ class MyDict(dict):
     def keys(self):
         return (keys for keys, _ in self.items())
 
+    @logger
+    @timer
     def pop(self, key, d=None):  # real signature unknown; restored from __doc__
         """
         D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
@@ -149,6 +178,8 @@ class MyDict(dict):
     def __copy__(self):
         self.copy()
 
+    @logger
+    @timer
     def __str__(self):
         return str(["{} : {}".format(key, value) for key, value in self.items()])
 
@@ -166,7 +197,7 @@ class MyDict(dict):
         if self.__len__() == 0 or len(self.copy_keys) == 0 and self.pos_iter > 0:
             self.pos_iter = 0
             raise StopIteration("Key was end out")
-   #     if self.copy_keys not in list(self.keys()):
-    #        raise StopIteration("The keys was updates")
+        #     if self.copy_keys not in list(self.keys()):
+        #        raise StopIteration("The keys was updates")
         self.pos_iter += 1
         return self.copy_keys.pop()
