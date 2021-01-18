@@ -1,28 +1,32 @@
 import random
 from datetime import datetime
 import os
+import time
+
 
 
 class MyDict(dict):
 
-    def log(self):
-        pass
-
-    
     def timer(func):
-        import time
-
-        def decor_fun(*args, **kwargs):
-            print(func)
-            t = time.perf_counter_ns()
-            result = func(*args, **kwargs)
-
-            print(func.__name__, time.perf_counter_ns() - t)
+        def inner(*arg, **kwargs):
+            start_timer = time.perf_counter_ns()
+            result = func(*arg, **kwargs)
+            stop_timer = time.perf_counter_ns()
+            print(f"Function {func.__name__}  work {stop_timer - start_timer} ns")
             return result
 
-        return decor_fun
+        return inner
 
+    def logger(func):
+        def inner(*arg, **kwargs):
+            result = func(*arg, **kwargs)
+            print(f"Function {func.__name__} input:{arg, kwargs} return {result}")
+            return result
 
+        return inner
+
+    @logger
+    @timer
     def __init__(self, *args, **kwargs):
         self.name_workdir = self.get_random_name() + "/"
         self.make_workdir()
@@ -32,6 +36,7 @@ class MyDict(dict):
                 self.add(key, value)
         self.copy_keys = []
         self.pos_iter = 0
+
 
     def get_random_name(self):
         return self.get_datenow() + '__' + str(random.randrange(10000, 99999))
@@ -45,6 +50,8 @@ class MyDict(dict):
             raise Exception("Bingo!")
         os.mkdir(self.name_workdir)
 
+    @logger
+    @timer
     def clear(self):
         """ D.clear() -> None.  Remove all items from D. """
         for key in self.keysset.copy():
@@ -81,6 +88,8 @@ class MyDict(dict):
     def keys(self):
         return (keys for keys, _ in self.items())
 
+    @logger
+    @timer
     def pop(self, key, d=None):  # real signature unknown; restored from __doc__
         """
         D.pop(k[,d]) -> v, remove specified key and return the corresponding value.
@@ -111,8 +120,6 @@ class MyDict(dict):
             return self.get(args[0])
         self.add(args[0], args[1]) if len(args) == 2 else self.add(args[0])
 
-    @timer
-    @log
     def update(self, *args):  # known special case of dict.update
         """
         D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
@@ -169,6 +176,8 @@ class MyDict(dict):
     def __copy__(self):
         self.copy()
 
+    @logger
+    @timer
     def __str__(self):
         return str(["{} : {}".format(key, value) for key, value in self.items()])
 
