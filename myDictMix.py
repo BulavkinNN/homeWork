@@ -14,4 +14,4 @@ class MyDictMix(myDict.MyDict, loggerMixin.LoggerMixin):
                 self.add(key, value)
         self.copy_keys = []
         self.pos_iter = 0
-        self.log("Hi")
+        self.log("Message from function mixin", vars())

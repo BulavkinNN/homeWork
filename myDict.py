@@ -12,7 +12,7 @@ class MyDict(dict):
             start_timer = time.perf_counter_ns()
             result = func(*arg, **kwargs)
             stop_timer = time.perf_counter_ns()
-            print(f"Function {func.__name__}  work {stop_timer - start_timer} ns")
+            print(f"{time.asctime()} function {func.__name__}  work {stop_timer - start_timer} ns")
             return result
 
         return inner
@@ -20,7 +20,7 @@ class MyDict(dict):
     def logger(func):
         def inner(*arg, **kwargs):
             result = func(*arg, **kwargs)
-            print(f"Function {func.__name__} input:{arg, kwargs} return {result}")
+            print(f"{time.asctime()} function {func.__name__} input:{arg, kwargs} return {result}")
             return result
 
         return inner
