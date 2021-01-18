@@ -5,6 +5,24 @@ import os
 
 class MyDict(dict):
 
+    def log(self):
+        pass
+
+    
+    def timer(func):
+        import time
+
+        def decor_fun(*args, **kwargs):
+            print(func)
+            t = time.perf_counter_ns()
+            result = func(*args, **kwargs)
+
+            print(func.__name__, time.perf_counter_ns() - t)
+            return result
+
+        return decor_fun
+
+
     def __init__(self, *args, **kwargs):
         self.name_workdir = self.get_random_name() + "/"
         self.make_workdir()
@@ -93,6 +111,8 @@ class MyDict(dict):
             return self.get(args[0])
         self.add(args[0], args[1]) if len(args) == 2 else self.add(args[0])
 
+    @timer
+    @log
     def update(self, *args):  # known special case of dict.update
         """
         D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.
@@ -166,7 +186,7 @@ class MyDict(dict):
         if self.__len__() == 0 or len(self.copy_keys) == 0 and self.pos_iter > 0:
             self.pos_iter = 0
             raise StopIteration("Key was end out")
-   #     if self.copy_keys not in list(self.keys()):
-    #        raise StopIteration("The keys was updates")
+        #     if self.copy_keys not in list(self.keys()):
+        #        raise StopIteration("The keys was updates")
         self.pos_iter += 1
         return self.copy_keys.pop()
