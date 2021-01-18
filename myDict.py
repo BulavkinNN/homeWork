@@ -73,6 +73,8 @@ class MyDict(dict):
             obj[key] = value
         return obj
 
+    @logger
+    @timer
     def get(self, *args, **kwargs):
         """ Return the value for key if key is in the dictionary, else default. """
         if len(args) > 0 and args[0] in self.keysset:
@@ -81,6 +83,8 @@ class MyDict(dict):
             return args[1]
         return None  # Хотел вот так args[1] or None !!!!!!!!!!!
 
+    @logger
+    @timer
     def items(self):
         """ D.items() -> a set-like object providing a view on D's items """
         return ((key, self.get(key)) for key in self.keysset)
@@ -120,6 +124,8 @@ class MyDict(dict):
             return self.get(args[0])
         self.add(args[0], args[1]) if len(args) == 2 else self.add(args[0])
 
+    @logger
+    @timer
     def update(self, *args):  # known special case of dict.update
         """
         D.update([E, ]**F) -> None.  Update D from dict/iterable E and F.

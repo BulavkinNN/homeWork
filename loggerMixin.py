@@ -1,8 +1,8 @@
 import sys
 import time
 
-class LoggerMixin(object):
 
+class LoggerMixin:
 
     def log(self, comment, *args, **kwargs):
         """how to access the  parent's function scope"""
