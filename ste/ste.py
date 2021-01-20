@@ -17,4 +17,4 @@ class STE:
         if not isinstance(count, int) or count > MAX_COUNT or count < MIN_COUNT:
             raise TypeError(f"Count must int and in range ({MIN_COUNT}-{MAX_COUNT})")
 
-        return make_count(1000000, BaseException)
+        return make_count(10000000, SyntaxError)

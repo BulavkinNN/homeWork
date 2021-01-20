@@ -7,3 +7,13 @@ print(response)
 
 response = ste.STE.test(count=1000)
 print(response)
+
+def se():
+    try:
+        print("Hello")
+        print("world!")
+    except SyntaxError:
+        pass
+
+se()
+
