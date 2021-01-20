@@ -14,12 +14,15 @@ def timer(func):
 def get_list(list_exc, output):
     return list_exc, output
 
-
-def coint(count):
+@timer
+def make_count(count, name_exc):
     count_copy = count
-    while (count_copy):
-        pass
-        count_copy -= 1;
+    while count_copy:
+        try:
+            raise name_exc
+        except name_exc:
+            pass
+        count_copy -= 1
 
 
-coint
+
