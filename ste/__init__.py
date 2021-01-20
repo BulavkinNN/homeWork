@@ -1,5 +1,4 @@
-
-__all__ = ('ste', 'timer')
+#__all__ = 'ste'
 
 
 if __name__ == '__main__':

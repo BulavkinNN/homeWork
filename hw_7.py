@@ -1,6 +1,7 @@
-from ste import *
+from ste import ste
 
-response = ste.STE.list()
+
+response = ste.STE.list(list_exc=[BaseException])
 print(response)
 
 
