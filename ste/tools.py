@@ -1,5 +1,5 @@
 import time
-import make_exc
+import makeExc
 
 
 def format_output(func):
@@ -44,9 +44,9 @@ def make_count(count, name_exc, manual_raise):
 def select_method(name_exc):
     """ Check method in class make_exc"""
     new_method = "make_" + name_exc
-    if new_method in dir(make_exc.MakeExc):
-        return getattr(make_exc.MakeExc, new_method, )
-    return None
+    if new_method in dir(makeExc.MakeExc):
+        return getattr(makeExc.MakeExc, new_method, )
+    raise TypeError("Internal error, can`t find method in class make_exc")
 
 
 

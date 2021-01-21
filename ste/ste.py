@@ -6,7 +6,7 @@ class STE:
     """Spend Time Exception (STE)"""
 
     @staticmethod
-    def test(list_exc: list = "", manual_raise: bool = False, count: int = 1, output: str = "list"):
+    def test(list_exc: list, manual_raise: bool = False, count: int = 1, output: str = "list")->list:
         """
         :param list_exc: List with Exception
         :param manual_raise: bool True use raise, False make error in function

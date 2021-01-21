@@ -1,4 +1,4 @@
-VALID_OUTPUT = ('list', "json", "xml" )
+VALID_OUTPUT = ('list', "json", "xml")
 DEFAULT_NAME_EXCEPTION = Exception
 MIN_COUNT = 0
 MAX_COUNT = 1000000

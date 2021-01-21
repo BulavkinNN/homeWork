@@ -1,4 +1,5 @@
 class MakeExc:
+    """ Class make errors in our functions"""
 
     @staticmethod
     def make_ZeroDivisionError():
