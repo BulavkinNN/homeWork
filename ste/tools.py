@@ -26,28 +26,28 @@ def get_list(list_exc, output):
 
 @format_output
 @timer
-def make_count(count, name_exc):
+def make_count(count, name_exc, manual_raise):
     count_copy = count
-    func = select_method(class_to_str(name_exc))
-    if not func:
+    if manual_raise:
         while count_copy:
             try:
                 raise name_exc
             except name_exc:
-                pass
-            count_copy -= 1
+                count_copy -= 1
     else:
+        func = select_method(name_exc)
+        if not func:
+            return None
         while count_copy:
             try:
                 func()
-            except name_exc:
-                pass
-            count_copy -= 1
+            except Exception:  # need Exception in input!
+                count_copy -= 1
 
 
 def select_method(name_exc):
+    """ Check method in class make_exc"""
     new_method = "make_" + name_exc
-    print(new_method)
     if new_method in dir(make_exc.MakeExc):
         return getattr(make_exc.MakeExc, new_method, )
     return None

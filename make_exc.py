@@ -12,3 +12,11 @@ class MakeExc:
     @staticmethod
     def make_AttributeError():
         "".test
+
+    @staticmethod
+    def make_NameError():
+        print_
+
+    @staticmethod
+    def make_LookupError():
+        "123"[5]

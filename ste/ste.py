@@ -1,6 +1,6 @@
 from ste.tools import *
 from ste.settings import *  # file with settings
-import  sys
+
 
 class STE:
 
@@ -13,14 +13,15 @@ class STE:
         return get_list(list_exc=[Exception], output='json')
 
     @staticmethod
-    def test(list_exc: list = "", count: int = 1, output: str = "list_"):
+    def test(list_exc: list = "", manual_raise: bool = False, count: int = 1, output: str = "list_"):
         """
         :param list_exc: List with Exception
-        :param count: The number of cycles
+        :param manual_raise: bool True use raise, False make error in function
+        :param count: int  The number of cycles
         :param output: Only list (xml, json in next edition).
         :return: list with test  time (ns) the cycle was running
         """
         if not isinstance(count, int) or count > MAX_COUNT or count < MIN_COUNT:
             raise TypeError(f"Count must int and in range ({MIN_COUNT}-{MAX_COUNT})")
 
-        return [make_count(count, exc) for exc in list_exc ]
+        return [make_count(count, exc, manual_raise) for exc in list_exc ]
