@@ -1,11 +1,11 @@
-from ste import ste
+from ste import ste, tools
 
 
-response = ste.STE.list(list_exc=[BaseException])
-print(response)
+#response = ste.STE.list(list_exc=[Exception])
+#print(response)
 
 
-response = ste.STE.test(count=1000)
+response = ste.STE.test([ZeroDivisionError], count=900000)
 print(response)
 
 def se():
@@ -15,5 +15,5 @@ def se():
     except SyntaxError:
         pass
 
-se()
+#se()
 

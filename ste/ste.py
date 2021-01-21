@@ -1,6 +1,6 @@
 from ste.tools import *
 from ste.settings import *  # file with settings
-
+import  sys
 
 class STE:
 
@@ -10,11 +10,17 @@ class STE:
             raise TypeError(f"Output only {VALID_OUTPUT}")
         if list_exc not in get_list(list_exc=[DEFAULT_NAME_EXCEPTION], output='list'):
             raise TypeError("Input valid exception!")
-        return get_list(list_exc=[BaseException], output='json')
+        return get_list(list_exc=[Exception], output='json')
 
     @staticmethod
-    def test(list_exc="", count=0, output=""):
+    def test(list_exc: list = "", count: int = 1, output: str = "list_"):
+        """
+        :param list_exc: List with Exception
+        :param count: The number of cycles
+        :param output: Only list (xml, json in next edition).
+        :return: list with test  time (ns) the cycle was running
+        """
         if not isinstance(count, int) or count > MAX_COUNT or count < MIN_COUNT:
             raise TypeError(f"Count must int and in range ({MIN_COUNT}-{MAX_COUNT})")
 
-        return make_count(10000000, SyntaxError)
+        return [make_count(count, exc) for exc in list_exc ]
