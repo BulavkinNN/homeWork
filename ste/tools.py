@@ -20,10 +20,6 @@ def timer(func):
     return inner
 
 
-def get_list(list_exc, output):
-    return list_exc, output
-
-
 @format_output
 @timer
 def make_count(count, name_exc, manual_raise):
@@ -31,7 +27,7 @@ def make_count(count, name_exc, manual_raise):
     if manual_raise:
         while count_copy:
             try:
-                raise name_exc
+                raise name_exc  # type('ZeroDivisionError', (), {}) make object
             except name_exc:
                 count_copy -= 1
     else:
@@ -53,5 +49,4 @@ def select_method(name_exc):
     return None
 
 
-def class_to_str(name_exc):
-    str = str(name_exc).split(" << ")[0]
+
