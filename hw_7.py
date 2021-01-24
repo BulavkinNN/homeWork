@@ -1,4 +1,4 @@
-from ste import ste, tools
+from ste import ste
 
 print("\n*************************  raice  ****************")
 
@@ -19,9 +19,9 @@ print("\n*************************  try import with SyntaxError ***********")
 
 def se():
     try:
-        import syntax_error
+        import ste.syntax_error
     except SyntaxError:
-        print("\n*************** import with syntax_error")
+        print("\n ... catch SyntaxError, when import  'syntax_error.py'")
 
 
 se()
@@ -57,9 +57,9 @@ except Exception as e:
     with open("analise_tb.log", "r") as file:
         contents = file.readlines()
         print(f"Traceback = {len(contents)} lines!")
-    print("Exception ==", e)
-    print("limit recurs= ", sys.getrecursionlimit())
-    print("Last recur №", count_recursion)
+    print("Exception =", e)
+    print("limit recurs =", sys.getrecursionlimit())
+    print("Last level of recurs =", count_recursion)
 
 finally:
     traceback_obj = sys.exc_info()[2] # if don`t catch

@@ -11435,28 +11435,4 @@ Traceback (most recent call last):
     return n + recur_err(n - 1 + 1 - 1)
   File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 42, in recur_err
     return n + recur_err(n - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 43, in recur_err
-    return n + recur_err(n - 1 + 1 - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 42, in recur_err
-    return n + recur_err(n - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 43, in recur_err
-    return n + recur_err(n - 1 + 1 - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 42, in recur_err
-    return n + recur_err(n - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 43, in recur_err
-    return n + recur_err(n - 1 + 1 - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 42, in recur_err
-    return n + recur_err(n - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 43, in recur_err
-    return n + recur_err(n - 1 + 1 - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 42, in recur_err
-    return n + recur_err(n - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 43, in recur_err
-    return n + recur_err(n - 1 + 1 - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 42, in recur_err
-    return n + recur_err(n - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 43, in recur_err
-    return n + recur_err(n - 1 + 1 - 1)
-  File "C:\Users\Николай\PycharmProjects\homeWork\hw_7.py", line 41, in recur_err
-    if n % 2 == 0:
 MemoryError: Stack overflow

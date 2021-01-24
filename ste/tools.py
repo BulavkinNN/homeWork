@@ -1,11 +1,11 @@
 import time
-import makeExc
+from ste import makeExc
 
 
 def format_output(func):
     def inner(*arg, **kwargs):
         result = func(*arg, **kwargs)
-        return f"Exception {arg[1]} was raises {arg[0]} at {result} ns ({result / 1e9}s) 1={result / arg[0]} ns"
+        return f"Exception {arg[1]} was raises {arg[0]:,} during {result:,} ns ({result / 1e9:.2}s), 1={int(result / arg[0])} ns"
 
     return inner
 
