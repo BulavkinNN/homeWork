@@ -14,17 +14,19 @@ response = ste.STE.test(["ZeroDivisionError", "AttributeError", "NameError", "Lo
 for item in response:
     print(item)
 
+print("\n*************************  try import with SyntaxError ***********")
+
 
 def se():
     try:
-        print("Hello")
-        print("world!")
+        import syntax_error
     except SyntaxError:
-        pass
+        print("\n*************** import with syntax_error")
 
 
-# se()
-print ("\n********************************** traceback ****************")
+se()
+
+print("\n********************************** traceback ****************")
 import sys
 import traceback
 
@@ -34,18 +36,18 @@ def recur_err(n):
     if n == 1:
         return "error"
     count_recursion += 1
-    #print("Recur №", count_recursion)
+    # print("Recur №", count_recursion)
     # Code for long stack trace shot: return n + recur_err(n - 1)
-    if n % 2 ==0:
+    if n % 2 == 0:
         return n + recur_err(n - 1)
-    return n + recur_err(n - 1+1-1)
+    return n + recur_err(n - 1 + 1 - 1)
 
 
 count_recursion = 0
 # Set max recursion (1000 default)
 sys.setrecursionlimit(50002)
 
-#print(sys.tracebacklimit(2000))
+# print(sys.tracebacklimit(2000))
 
 try:
     print(recur_err(50000))
@@ -55,10 +57,10 @@ except Exception as e:
     with open("analise_tb.log", "r") as file:
         contents = file.readlines()
         print(f"Traceback = {len(contents)} lines!")
-    print("Exception ==",e)
+    print("Exception ==", e)
     print("limit recurs= ", sys.getrecursionlimit())
     print("Last recur №", count_recursion)
 
 finally:
-    traceback_obj = sys.exc_info()[2]
+    traceback_obj = sys.exc_info()[2] # if don`t catch
     traceback.print_tb(traceback_obj)
