@@ -36,7 +36,10 @@ def recur_err(n):
         return "error"
     count_recursion += 1
     print("Recur №", count_recursion)
-    return n + recur_err(n - 1)
+    # Code for long stack trace shot: return n + recur_err(n - 1)
+    if n % 2 ==0:
+        return n + recur_err(n - 1)
+    return n + recur_err(n - 1+1-1)
 
 
 count_recursion = 0
@@ -49,7 +52,7 @@ try:
     print(recur_err(40000))
 except Exception as e:
     traceback.print_exc()
-    
+
     print("Exception ==",e)
     print("limit recurs= ", sys.getrecursionlimit())
     print("Last recur №", count_recursion)
