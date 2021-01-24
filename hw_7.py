@@ -1,14 +1,14 @@
 from ste import ste, tools
 
-print("*************************")
-print("raice")
+print("\n*************************  raice  ****************")
+
 response = ste.STE.test([ZeroDivisionError, AttributeError, NameError, LookupError], manual_raise=True, count=1000000,
                         output="list")
 for item in response:
     print(item)
 
-print("*************************")
-print("make exception in functions")
+print("\n*************************  make exception in functions ***********")
+
 response = ste.STE.test(["ZeroDivisionError", "AttributeError", "NameError", "LookupError"], manual_raise=False,
                         count=1000000, output="list")
 for item in response:
@@ -24,8 +24,7 @@ def se():
 
 
 # se()
-#////////////////////////////////////////////////// traceback
-
+print ("\n********************************** traceback ****************")
 import sys
 import traceback
 
@@ -35,7 +34,7 @@ def recur_err(n):
     if n == 1:
         return "error"
     count_recursion += 1
-    print("Recur №", count_recursion)
+    #print("Recur №", count_recursion)
     # Code for long stack trace shot: return n + recur_err(n - 1)
     if n % 2 ==0:
         return n + recur_err(n - 1)
@@ -49,10 +48,13 @@ sys.setrecursionlimit(50002)
 #print(sys.tracebacklimit(2000))
 
 try:
-    print(recur_err(40000))
+    print(recur_err(50000))
 except Exception as e:
-    traceback.print_exc()
-
+    with open("analise_tb.log", "w") as file:
+        traceback.print_exc(file=file)
+    with open("analise_tb.log", "r") as file:
+        contents = file.readlines()
+        print(f"Traceback = {len(contents)} lines!")
     print("Exception ==",e)
     print("limit recurs= ", sys.getrecursionlimit())
     print("Last recur №", count_recursion)
