@@ -43,7 +43,7 @@ def make_count(count, name_exc, manual_raise):
 
 def select_method(name_exc):
     """ Check method in class make_exc"""
-    new_method = "make_" + name_exc
+    new_method = "make_" + str(name_exc.__name__).lower()
     if new_method in dir(makeExc.MakeExc):
         return getattr(makeExc.MakeExc, new_method, )
     raise TypeError("Internal error, can`t find method in class make_exc")

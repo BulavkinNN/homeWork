@@ -1,16 +1,16 @@
 from ste import ste
 
 print("\n*************************  raice  ****************")
-
-response = ste.STE.test([ZeroDivisionError, AttributeError, NameError, LookupError], manual_raise=True, count=1000000,
+list_exc_to_test = [ZeroDivisionError, AttributeError, NameError, LookupError]
+response = ste.STE.test(list_exc_to_test, manual_raise=True, count=1000000,
                         output="list")
 for item in response:
     print(item)
 
 print("\n*************************  make exception in functions ***********")
+response = ste.STE.test(list_exc_to_test, manual_raise=False, count=1000000, output="list")
 
-response = ste.STE.test(["ZeroDivisionError", "AttributeError", "NameError", "LookupError"], manual_raise=False,
-                        count=1000000, output="list")
+
 for item in response:
     print(item)
 
@@ -36,7 +36,7 @@ def recur_err(n):
     if n == 1:
         return "error"
     count_recursion += 1
-    # print("Recur №", count_recursion)
+    #print("Recur №", count_recursion)
     # Code for long stack trace shot: return n + recur_err(n - 1)
     if n % 2 == 0:
         return n + recur_err(n - 1)
@@ -50,7 +50,7 @@ sys.setrecursionlimit(50002)
 # print(sys.tracebacklimit(2000))
 
 try:
-    print(recur_err(50000))
+    print(recur_err(20000))
 except Exception as e:
     with open("analise_tb.log", "w") as file:
         traceback.print_exc(file=file)
