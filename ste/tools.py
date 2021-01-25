@@ -37,7 +37,7 @@ def make_count(count, name_exc, manual_raise):
         while count_copy:
             try:
                 func()
-            except Exception:  # need Exception in input!
+            except name_exc:
                 count_copy -= 1
 
 

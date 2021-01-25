@@ -1,18 +1,19 @@
 from ste import ste
 
+
+def print_list(inp_list: iter):
+    for item in inp_list:
+        print(item)
+
+
 print("\n*************************  raice  ****************")
 list_exc_to_test = [ZeroDivisionError, AttributeError, NameError, LookupError]
-response = ste.STE.test(list_exc_to_test, manual_raise=True, count=1000000,
-                        output="list")
-for item in response:
-    print(item)
+response = ste.STE.test(list_exc_to_test, manual_raise=True, count=1000000, output="list")
+print_list(response)
 
 print("\n*************************  make exception in functions ***********")
 response = ste.STE.test(list_exc_to_test, manual_raise=False, count=1000000, output="list")
-
-
-for item in response:
-    print(item)
+print_list(response)
 
 print("\n*************************  try import with SyntaxError ***********")
 
@@ -45,9 +46,9 @@ def recur_err(n):
 
 count_recursion = 0
 # Set max recursion (1000 default)
-sys.setrecursionlimit(50002)
+sys.setrecursionlimit(50000)
 
-# print(sys.tracebacklimit(2000))
+
 
 try:
     print(recur_err(20000))
