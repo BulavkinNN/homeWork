@@ -1,5 +1,5 @@
 from ste import ste, tools
-
+import sys
 print("*************************")
 print("raice")
 response = ste.STE.test([ZeroDivisionError, AttributeError, NameError, LookupError], manual_raise=True, count=1000000,
