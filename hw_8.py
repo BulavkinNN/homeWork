@@ -23,13 +23,13 @@ check_time_prev = 0
 buffer_list = [0, 2]
 result_table = dict()
 
-while False:
+while True:
     buffer = buffer_list.pop(0)
 
     try:
         with open("e:\Mult.avi", mode='rb', buffering=buffer) as file:
             check_time = read_from_file(file)  #
-    except OverflowError:
+    except (OverflowError, MemoryError):
         break
     result_table[buffer] = check_time
     print(f"buf= {buffer}, check_time= {check_time:,}")
@@ -42,6 +42,15 @@ for k, v in result_table.items():
         print(f"Optimal buffering = {k:,}, time = {v:,}")
     if v == max(result_table.values()):
         print(f"Non-optimal buffering = {k:,}, time = {v:,}")
+
+# draw result
+v_max = max(result_table.values())
+scale = (50/v_max)
+sort_key = sorted(result_table.keys())
+print(f"\nBuffering      {(' '*50):<50} Time, ns\n")
+for key in sort_key:
+    print(f"{key:<13,} {('*'*int(result_table[key]*scale)):<50} {result_table[key]:,}")
+
 
 # /////////////////////////////////////////
 print("Read EXIF data from jpq file")
@@ -71,7 +80,7 @@ def _find_jpeg_exif(file):
     if marker == b'\xff\xe0':
         print("Default header")
         lenth_data = int.from_bytes(file.read(2),'big')
-        
+
         if lenth_data==16:
             print("All norm!")
         print(f"Identifier={file.read(4).decode()}{int.from_bytes(file.read(1),'big')}")
