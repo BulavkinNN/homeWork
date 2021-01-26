@@ -2,22 +2,22 @@ class MakeExc:
     """ Class make errors in our functions"""
 
     @staticmethod
-    def make_ZeroDivisionError():
+    def make_zerodivisionerror():
         1 / 0
 
     @staticmethod
-    def make_SyntaxError():  # not work
+    def make_syntaxerror():  # not work
         # i = 1.test
         pass
 
     @staticmethod
-    def make_AttributeError():
+    def make_attributeerror():
         "".test
 
     @staticmethod
-    def make_NameError():
+    def make_nameerror():
         print_
 
     @staticmethod
-    def make_LookupError():
+    def make_lookuperror():
         "123"[5]
