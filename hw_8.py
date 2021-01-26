@@ -1,5 +1,5 @@
 import time
-
+import exifread
 
 def timer(func):
     def inner(*arg, **kwargs):
@@ -12,22 +12,35 @@ def timer(func):
 
 
 @timer
-def read_from_file(file,size):
-    file.read(size)
+def read_from_file(file):
+    file.read()
 
-progress =1
-check_time =[0,1]
-check_time_prev =1e10
+
+progress = 1
+check_time = 0
+check_time_prev = 0
 buffer_list = [0, 2]
+result_table = dict()
 
-while check_time[-2] > check_time[-1]:
+while True:
     buffer = buffer_list.pop(0)
-    print('buf=', buffer)
-    for i in range(0,5):
-        with open("e:\Mult.mkv", mode='rb', buffering=buffer) as file:
-            check_time += read_from_file(file, size =1000000)#
-    check_time.append(check_time /  5)
-    progress = check_time_prev - check_time
+
+    try:
+        with open("e:\Mult.avi", mode='rb', buffering=buffer) as file:
+            check_time = read_from_file(file)  #
+    except OverflowError:
+        break
+    result_table[buffer] = check_time
+    print(f"buf= {buffer}, check_time= {check_time:,}")
     check_time_prev = check_time
-    print("prog=",progress)
-    buffer_list.append(pow(buffer_list[-1],2)) #Make list [0,2,4,8,16,32 and ....
+    buffer_list.append(buffer_list[-1] * 2)  # Make list [0,2,4,8,16,32 and ....
+
+# print result
+for k,v in result_table.items():
+    if v == min(result_table.values()):
+        print(f"Optimal buffering = {k:,}, time = {v:,}")
+    if v == max(result_table.values()):
+        print(f"Non-optimal buffering = {k:,}, time = {v:,}")
+
+# /////////////////////////////////////////
+print("Read EXIF data from jpq file")
