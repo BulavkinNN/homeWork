@@ -20,7 +20,7 @@ def timer(func):
 
     return inner
 
-logging.FileHandler
+
 @timer
 def read_from_file(file):
     file.read()
