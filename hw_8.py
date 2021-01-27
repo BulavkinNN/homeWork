@@ -1,6 +1,6 @@
 import time
 import logging.config
-logging.config.fileConfig(fname='hw_8_source/file.conf', disable_existing_loggers=False)
+logging.config.fileConfig(fname='hw_8_source/file.conf',disable_existing_loggers=False)#
 
 
 
@@ -20,7 +20,7 @@ def timer(func):
 
     return inner
 
-
+logging.FileHandler
 @timer
 def read_from_file(file):
     file.read()
