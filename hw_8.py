@@ -1,10 +1,8 @@
 import time
-
-import logging
 import logging.config
 logging.config.fileConfig(fname='hw_8_source/file.conf', disable_existing_loggers=False)
 
-logger = logging.getLogger(__name__)
+
 
 # import exifread
 # logging.basicConfig(level=logging.INFO, filename="root.log", filemode="r")
@@ -32,7 +30,7 @@ def test_buffering(file_name="e:\Mult.avi"):
     buffer_list = [0, 2]
     result_table = dict()
 
-    logging.info('Start reading big file')
+    logger.info('Start reading big file')
     while True:
         buffer = buffer_list.pop(0)
 
@@ -40,17 +38,17 @@ def test_buffering(file_name="e:\Mult.avi"):
             with open(file_name, mode='rb', buffering=buffer) as file:
                 check_time = read_from_file(file)  #
         except (OverflowError, MemoryError) as e:
-            logging.error(f'Error when read file {e}', exc_info=False)
+            logger.error(f'Error when read file {e}', exc_info=False)
             break
         result_table[buffer] = check_time
-        logging.debug(f"buf= {buffer}, check_time= {check_time:,}")
+        logger.debug(f"buf= {buffer}, check_time= {check_time:,}")
         buffer_list.append(buffer_list[-1] * 2)  # Make list [0,2,4,8,16,32 and ....
     return result_table
 
 
 def print_result(result_table):
     # print result
-    logging.info('Print optimal/non-optimal result')
+    logger.info('Print optimal/non-optimal result')
     for k, v in result_table.items():
         if v == min(result_table.values()):
             print(f"Optimal buffering = {k:,}, time = {v:,} ns")
@@ -61,7 +59,7 @@ def print_result(result_table):
 
 def draw_result(result_table):
     # draw result
-    logging.info('Draw result')
+    logger.info('Draw result')
     v_max = max(result_table.values())
     scale = (v_max / 50)
     sort_key = sorted(result_table.keys())
@@ -79,23 +77,23 @@ def _find_jpeg_exif(file):
     marker = file.read(2)
 
     if marker == b'\xff\xe0':
-        logging.debug("Default header")
+        logger.debug("Default header")
         length_data = int.from_bytes(file.read(2), 'big')
 
         if length_data == 16:
-            logging.info("Length after Default header == 16")
-        logging.debug(f"Identifier={file.read(4).decode()}{int.from_bytes(file.read(1), 'big')}")
-        logging.debug(f"version= {int.from_bytes(file.read(1), 'big')}.{int.from_bytes(file.read(1), 'big')}")
-        logging.debug(f"units= {int.from_bytes(file.read(1), 'big')}")
-        logging.debug(f"density= {int.from_bytes(file.read(2), 'big')}x{int.from_bytes(file.read(2), 'big')}")
-        logging.debug(f"trumbnail= {int.from_bytes(file.read(1), 'big')}x{int.from_bytes(file.read(1), 'big')}")
+            logger.info("Length after Default header == 16")
+        logger.debug(f"Identifier={file.read(4).decode()}{int.from_bytes(file.read(1), 'big')}")
+        logger.debug(f"version= {int.from_bytes(file.read(1), 'big')}.{int.from_bytes(file.read(1), 'big')}")
+        logger.debug(f"units= {int.from_bytes(file.read(1), 'big')}")
+        logger.debug(f"density= {int.from_bytes(file.read(2), 'big')}x{int.from_bytes(file.read(2), 'big')}")
+        logger.debug(f"trumbnail= {int.from_bytes(file.read(1), 'big')}x{int.from_bytes(file.read(1), 'big')}")
 
 
 def read_exif(file_name="hw_8_source/1.jpg"):
-    logging.info("Read EXIF data from jpq file")
+    logger.info("Read EXIF data from jpq file")
     # file_name = "hw_8_source/fisherman.jpg"
     # file_name = "hw_8_source/1.jpg"
-    #marker in jpg
+    #marker in jpg not use!!!
     marker_mapping = {
         b'\xFF\xd8': "Start of Image",
         b'\xff\xe0': "Application Default Header",
@@ -108,21 +106,21 @@ def read_exif(file_name="hw_8_source/1.jpg"):
 
     with open(file_name, "rb") as file:
         data = file.read(2)
-        logging.debug(f"data (first 2 bytes) {data}" )
+        logger.debug(f"data (first 2 bytes) {data}" )
         if data[0:2] == b'\xFF\xD8':
-            logging.info("It`s jpeg file")
+            logger.info("It`s jpeg file")
             try:
                 _find_jpeg_exif(file)
             except Exception as e:
-                logging.error(f'Error reading exif from jpeg {e}', exc_info=True)
+                logger.error(f'Error reading exif from jpeg {e}', exc_info=True)
 
 
 # /////////////////////////////////////////
 def test_logging():
-    logging.warning("Try  logging.exception() not in try: except")
-    logging.exception("Try  logging.exception() not in try: except")
+    logger.warning("Try  logging.exception() not in try: except")
+    logger.exception("Try  logging.exception() not in try: except")
 
-
+logger = logging.getLogger("sampleLogger")
 # /////////////////////////////////////////
 draw_result(print_result(test_buffering("e:\Mult.avi")))
 read_exif(file_name="hw_8_source/1.jpg")
