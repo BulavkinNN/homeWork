@@ -1,9 +1,14 @@
 import time
+
 import logging
+import logging.config
+logging.config.fileConfig(fname='hw_8_source/file.conf', disable_existing_loggers=False)
+
+logger = logging.getLogger(__name__)
 
 # import exifread
 # logging.basicConfig(level=logging.INFO, filename="root.log", filemode="r")
-logging.basicConfig(level=logging.INFO)
+#logging.basicConfig(level=logging.INFO)
 
 
 def timer(func):
@@ -90,6 +95,7 @@ def read_exif(file_name="hw_8_source/1.jpg"):
     logging.info("Read EXIF data from jpq file")
     # file_name = "hw_8_source/fisherman.jpg"
     # file_name = "hw_8_source/1.jpg"
+    #marker in jpg
     marker_mapping = {
         b'\xFF\xd8': "Start of Image",
         b'\xff\xe0': "Application Default Header",
@@ -102,7 +108,7 @@ def read_exif(file_name="hw_8_source/1.jpg"):
 
     with open(file_name, "rb") as file:
         data = file.read(2)
-        logging.debug("data (first 2 bytes)", data)
+        logging.debug(f"data (first 2 bytes) {data}" )
         if data[0:2] == b'\xFF\xD8':
             logging.info("It`s jpeg file")
             try:
