@@ -57,7 +57,7 @@ except Exception as e:
         traceback.print_exc(file=file)
     with open("analise_tb.log", "r") as file:
         contents = file.readlines()
-        print(f"Traceback = {len(contents)} lines!")
+        print(f"Traceback = {len(contents):,} lines!")
     print("Exception =", e)
     print("limit recurs =", sys.getrecursionlimit())
     print("Last level of recurs =", count_recursion)

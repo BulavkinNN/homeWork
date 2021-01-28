@@ -1,0 +1,93 @@
+2021-01-28 10:39:02,889 - sampleLogger - INFO - Start reading big file
+2021-01-28 10:49:27,902 - sampleLogger - INFO - Start reading big file
+2021-01-28 10:49:41,503 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 10:49:41,503 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 10:49:41,504 - sampleLogger - INFO - Draw result
+2021-01-28 10:49:41,505 - sampleLogger - INFO - Read EXIF data from jpq file
+2021-01-28 10:49:41,530 - sampleLogger - INFO - It`s jpeg file
+2021-01-28 10:49:41,530 - sampleLogger - INFO - Length after Default header == 16
+2021-01-28 10:49:41,531 - sampleLogger - WARNING - Try  logging.exception() not in try: except
+2021-01-28 10:49:41,532 - sampleLogger - ERROR - Try  logging.exception() not in try: except
+NoneType: None
+2021-01-28 10:53:00,022 - sampleLogger - INFO - Start reading big file
+2021-01-28 10:53:08,987 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 10:53:08,987 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 10:53:08,988 - sampleLogger - INFO - Draw result
+2021-01-28 10:53:08,989 - sampleLogger - INFO - Read EXIF data from jpq file
+2021-01-28 10:53:09,013 - sampleLogger - INFO - It`s jpeg file
+2021-01-28 10:53:09,014 - sampleLogger - INFO - Length after Default header == 16
+2021-01-28 10:53:09,015 - sampleLogger - WARNING - Try  logging.exception() not in try: except
+2021-01-28 10:53:09,016 - sampleLogger - ERROR - Try  logging.exception() not in try: except
+NoneType: None
+2021-01-28 10:54:30,496 - sampleLogger - INFO - Start reading big file
+2021-01-28 10:54:39,117 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 10:54:39,118 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 10:54:39,118 - sampleLogger - INFO - Draw result
+2021-01-28 10:54:39,119 - sampleLogger - INFO - Read EXIF data from jpq file
+2021-01-28 10:54:39,120 - sampleLogger - INFO - It`s jpeg file
+2021-01-28 10:54:39,120 - sampleLogger - INFO - Default header
+2021-01-28 10:54:39,121 - sampleLogger - WARNING - Try  logging.exception() not in try: except
+2021-01-28 10:54:39,122 - sampleLogger - ERROR - Try  logging.exception() not in try: except
+NoneType: None
+2021-01-28 11:01:34,954 - sampleLogger - INFO - Start reading big file
+2021-01-28 11:01:43,073 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 11:01:43,074 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 11:01:43,074 - sampleLogger - INFO - Draw result
+2021-01-28 11:01:43,075 - sampleLogger - INFO - Read EXIF data from jpq file
+2021-01-28 11:01:43,076 - sampleLogger - INFO - It`s jpeg file
+2021-01-28 11:01:43,076 - sampleLogger - INFO - Default header
+2021-01-28 11:01:43,077 - sampleLogger - WARNING - Try  logging.exception() not in try: except
+2021-01-28 11:01:43,077 - sampleLogger - ERROR - Try  logging.exception() not in try: except
+NoneType: None
+2021-01-28 11:01:59,963 - sampleLogger - INFO - Start reading big file
+2021-01-28 11:02:07,886 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 11:02:07,886 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 11:02:07,887 - sampleLogger - INFO - Draw result
+2021-01-28 11:02:07,888 - sampleLogger - INFO - Read EXIF data from jpq file
+2021-01-28 11:02:07,888 - sampleLogger - INFO - It`s jpeg file
+2021-01-28 11:02:07,889 - sampleLogger - INFO - Default header
+2021-01-28 11:02:07,890 - sampleLogger - WARNING - Try  logging.exception() not in try: except
+2021-01-28 11:02:07,890 - sampleLogger - ERROR - Try  logging.exception() not in try: except
+NoneType: None
+2021-01-28 11:03:40,693 - sampleLogger - INFO - Start reading big file
+2021-01-28 11:03:49,983 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 11:03:49,983 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 11:03:49,984 - sampleLogger - INFO - Draw result
+2021-01-28 11:03:49,985 - sampleLogger - INFO - Start reading big file
+2021-01-28 11:03:51,806 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 11:03:51,807 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 11:03:51,807 - sampleLogger - INFO - Draw result
+2021-01-28 11:03:51,808 - sampleLogger - INFO - Read EXIF data from jpq file
+2021-01-28 11:03:51,809 - sampleLogger - INFO - It`s jpeg file
+2021-01-28 11:03:51,809 - sampleLogger - INFO - Default header
+2021-01-28 11:03:51,810 - sampleLogger - WARNING - Try  logging.exception() not in try: except
+2021-01-28 11:03:51,810 - sampleLogger - ERROR - Try  logging.exception() not in try: except
+NoneType: None
+2021-01-28 11:04:12,692 - sampleLogger - INFO - Start reading big file
+2021-01-28 11:04:20,899 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 11:04:20,900 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 11:04:20,900 - sampleLogger - INFO - Draw result
+2021-01-28 11:04:20,902 - sampleLogger - INFO - Start reading big file
+2021-01-28 11:04:37,753 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 11:04:37,753 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 11:04:37,754 - sampleLogger - INFO - Draw result
+2021-01-28 11:04:37,755 - sampleLogger - INFO - Read EXIF data from jpq file
+2021-01-28 11:04:37,756 - sampleLogger - INFO - It`s jpeg file
+2021-01-28 11:04:37,756 - sampleLogger - INFO - Default header
+2021-01-28 11:04:37,757 - sampleLogger - WARNING - Try  logging.exception() not in try: except
+2021-01-28 11:04:37,757 - sampleLogger - ERROR - Try  logging.exception() not in try: except
+NoneType: None
+2021-01-28 11:05:40,723 - sampleLogger - INFO - Start reading big file
+2021-01-28 11:05:48,627 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 11:05:48,627 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 11:05:48,628 - sampleLogger - INFO - Draw result
+2021-01-28 11:05:48,629 - sampleLogger - INFO - Start reading big file
+2021-01-28 11:06:05,472 - sampleLogger - ERROR - Error when read file Python int too large to convert to C int
+2021-01-28 11:06:05,473 - sampleLogger - INFO - Print optimal/non-optimal result
+2021-01-28 11:06:05,473 - sampleLogger - INFO - Draw result
+2021-01-28 11:06:05,474 - sampleLogger - INFO - Read EXIF data from jpq file
+2021-01-28 11:06:05,475 - sampleLogger - INFO - It`s jpeg file
+2021-01-28 11:06:05,475 - sampleLogger - INFO - Default header
+2021-01-28 11:06:05,476 - sampleLogger - WARNING - Try  logging.exception() not in try: except
+2021-01-28 11:06:05,477 - sampleLogger - ERROR - Try  logging.exception() not in try: except
+NoneType: None

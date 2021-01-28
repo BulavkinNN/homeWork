@@ -1,12 +1,12 @@
 import time
 import logging.config
-logging.config.fileConfig(fname='hw_8_source/file.conf',disable_existing_loggers=False)#
 
+logging.config.fileConfig(fname='hw_8_source/file.conf', disable_existing_loggers=False)  #
 
 
 # import exifread
 # logging.basicConfig(level=logging.INFO, filename="root.log", filemode="r")
-#logging.basicConfig(level=logging.INFO)
+# logging.basicConfig(level=logging.INFO)
 
 
 def timer(func):
@@ -22,11 +22,11 @@ def timer(func):
 
 
 @timer
-def read_from_file(file):
-    file.read()
+def read_from_file(file, size=-1):
+    file.read(size)
 
 
-def test_buffering(file_name="e:\Mult.avi"):
+def test_buffering(file_name="e:\Mult.avi", size=-1):
     buffer_list = [0, 2]
     result_table = dict()
 
@@ -36,7 +36,7 @@ def test_buffering(file_name="e:\Mult.avi"):
 
         try:
             with open(file_name, mode='rb', buffering=buffer) as file:
-                check_time = read_from_file(file)  #
+                check_time = read_from_file(file, size)  #
         except (OverflowError, MemoryError) as e:
             logger.error(f'Error when read file {e}', exc_info=False)
             break
@@ -77,11 +77,11 @@ def _find_jpeg_exif(file):
     marker = file.read(2)
 
     if marker == b'\xff\xe0':
-        logger.debug("Default header")
+        logger.info("Default header")
         length_data = int.from_bytes(file.read(2), 'big')
 
         if length_data == 16:
-            logger.info("Length after Default header == 16")
+            logger.debug("Length after Default header == 16")
         logger.debug(f"Identifier={file.read(4).decode()}{int.from_bytes(file.read(1), 'big')}")
         logger.debug(f"version= {int.from_bytes(file.read(1), 'big')}.{int.from_bytes(file.read(1), 'big')}")
         logger.debug(f"units= {int.from_bytes(file.read(1), 'big')}")
@@ -93,7 +93,7 @@ def read_exif(file_name="hw_8_source/1.jpg"):
     logger.info("Read EXIF data from jpq file")
     # file_name = "hw_8_source/fisherman.jpg"
     # file_name = "hw_8_source/1.jpg"
-    #marker in jpg not use!!!
+    # marker in jpg not use!!!
     marker_mapping = {
         b'\xFF\xd8': "Start of Image",
         b'\xff\xe0': "Application Default Header",
@@ -106,7 +106,7 @@ def read_exif(file_name="hw_8_source/1.jpg"):
 
     with open(file_name, "rb") as file:
         data = file.read(2)
-        logger.debug(f"data (first 2 bytes) {data}" )
+        logger.debug(f"data (first 2 bytes) {data}")
         if data[0:2] == b'\xFF\xD8':
             logger.info("It`s jpeg file")
             try:
@@ -120,8 +120,12 @@ def test_logging():
     logger.warning("Try  logging.exception() not in try: except")
     logger.exception("Try  logging.exception() not in try: except")
 
-logger = logging.getLogger("sampleLogger")
+
 # /////////////////////////////////////////
-draw_result(print_result(test_buffering("e:\Mult.avi")))
+logger = logging.getLogger("sampleLogger")
+# draw_result(print_result(test_buffering("/home/nikolay/Downloads/Host_2020_Persanov.avi"))) Very hard!!!
+draw_result(print_result(test_buffering("/home/nikolay/Downloads/31.mp4")))
+draw_result(print_result(test_buffering("/dev/random", 100000)))
+
 read_exif(file_name="hw_8_source/1.jpg")
 test_logging()
